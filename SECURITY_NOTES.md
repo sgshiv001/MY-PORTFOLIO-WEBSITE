@@ -7,7 +7,7 @@
 - CSP allows same-origin scripts/fonts/styles, the required GitHub image hosts, public GitHub API reads, and local/data images. Inline executable scripts and inline event handlers are blocked. Inline styles remain allowed because the animations use them.
 - `frame-ancestors 'none'` and `X-Frame-Options: DENY` prevent framing. `X-Content-Type-Options: nosniff` and explicit MIME types protect file interpretation.
 - Referrer policy is `strict-origin-when-cross-origin`. Permissions policy disables camera, microphone, geolocation, payment, USB, serial and screen capture. Cross-origin opener policy is `same-origin`.
-- Only 29 explicitly packaged public files can be served. Editable source, configuration, environment files, source maps, the Worker itself and `_headers` are excluded.
+- The Worker serves only the files in its generated allowlist. The allowlist excludes editable source, configuration, environment files, source maps, the Worker itself, and `_headers`.
 - Only GET and HEAD are accepted. Unknown paths return 404; malformed encodings return 400; write methods return 405. There is no server-side form, account system, database or upload endpoint.
 - JS/CSS use SHA-384 subresource integrity and content-hashed filenames. Public scripts are minified with no source maps. Minification is not encryption and does not prevent copying.
 - GitHub content is public and read without a private API token. README text and links are rendered safely; scripts and unsafe URL schemes are covered by regression tests.

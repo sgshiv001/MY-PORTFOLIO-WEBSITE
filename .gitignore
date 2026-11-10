@@ -1,5 +1,12 @@
 .sites-runtime/
 .sites-checkout/
 node_modules/
+.env
+.env.*
+!.env.example
+npm-debug.log*
+.DS_Store
+Thumbs.db
 *.tar.gz
 *.zip
+vector-add.exe
