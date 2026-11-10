@@ -1,0 +1,35 @@
+.certificate-section { position: relative; overflow: hidden; padding-top: 90px; padding-bottom: 90px; border-top: 1px solid var(--border); background: radial-gradient(ellipse at 85% 20%,#64203a26,transparent 60%); }
+.certificate-section > .chapter-heading { position: relative; margin-bottom: 42px; z-index: 1; }
+.certificate-card { display: grid; grid-template-columns: 1.1fr 1fr; border: 1px solid #713044; background: #120b10; position: relative; z-index: 1; }
+.certificate-preview { display: flex; flex-direction: column; justify-content: center; padding: 28px; background: linear-gradient(145deg,#28151d,#100c12); border-right: 1px solid #713044; overflow: hidden; }
+.certificate-preview img { display: block; width: 100%; height: auto; box-shadow: 0 12px 35px #0006; transition: transform .65s cubic-bezier(.2,.7,.2,1); }
+.certificate-preview:hover img { transform: scale(1.025) rotate(-.7deg); }
+.certificate-preview > span { display: flex; justify-content: space-between; align-items: center; color: #ecc6d2; font-family: var(--code); font-size: .72rem; padding-top: 20px; }
+.certificate-information { padding: 35px; }
+.certificate-kicker { font-family: var(--code); font-size: .65rem; color: #f19eb5; line-height: 1.8; }
+.certificate-kicker > span { display: inline-grid; place-items: center; width: 24px; height: 24px; border: 1px solid #b95575; border-radius: 50%; margin-right: 6px; }
+.certificate-information h3 { font-family: var(--headline); font-weight: 500; font-size: clamp(1.7rem,2.7vw,2.8rem); letter-spacing: -.055em; line-height: 1.15; margin: 22px 0 16px; }
+.certificate-issuer { font-size: 1rem; color: #f1dde3; }
+.certificate-issuer > span { font-size: .82rem; color: #c9aeb9; }
+.certificate-information dl { margin: 24px 0; padding: 18px 0; border-top: 1px solid #44232f; border-bottom: 1px solid #44232f; }
+.certificate-information dl > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 15px; font-size: .82rem; padding: 5px 0; }
+.certificate-information dt { color: #c09aa9; }
+.certificate-information dd { margin: 0; color: #eddae1; overflow-wrap: anywhere; }
+.certificate-description { font-size: .95rem; line-height: 1.8; color: #d4bec7; }
+.certificate-links { display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 24px; align-items: center; }
+.certificate-links > a { font-size: .8rem; display: inline-flex; gap: 12px; align-items: center; min-height: 46px; color: #f1b3c6; }
+.certificate-links .certificate-verify { padding: 10px 14px; border: 1px solid #ac4569; background: #5a1d34; color: #ffeaf1; }
+.certificate-links .certificate-verify:hover { background: #832d4d; }
+[data-theme="light"] .certificate-section { background: radial-gradient(ellipse at 85% 20%,#efcbd54d,transparent 60%); }
+[data-theme="light"] .certificate-card { background: #fffaf7; border-color: #c99eac; }
+[data-theme="light"] .certificate-preview { background: linear-gradient(145deg,#f0e2e1,#f7edeb); border-color: #c99eac; }
+[data-theme="light"] .certificate-preview > span, [data-theme="light"] .certificate-kicker, [data-theme="light"] .certificate-information dt { color: #843b57; }
+[data-theme="light"] .certificate-issuer, [data-theme="light"] .certificate-information dd { color: #3e2732; }
+[data-theme="light"] .certificate-issuer > span, [data-theme="light"] .certificate-description { color: #68535d; }
+[data-theme="light"] .certificate-information dl { border-color: #dbc2cb; }
+[data-theme="light"] .certificate-links > a { color: #94294f; }
+[data-theme="light"] .certificate-links .certificate-verify { background: #a4294e; color: white; }
+@media(max-width:950px) { .certificate-card { grid-template-columns: 1fr; } .certificate-preview { border-right: 0; border-bottom: 1px solid #713044; } .certificate-preview img { max-width: 650px; margin: auto; } }
+@media(max-width:700px) { .certificate-section { padding-top: 60px; padding-bottom: 60px; } .certificate-preview { padding: 18px; } .certificate-information { padding: 24px 22px; } .certificate-kicker { font-size: .7rem; } .certificate-information h3 { font-size: clamp(1.8rem,8vw,2.5rem); } .certificate-description { font-size: 1rem; } .certificate-links > a { font-size: .9rem; } .certificate-information dl > div { font-size: .9rem; } }
+@media(prefers-reduced-motion:reduce) { .certificate-preview img { transition: none; } }
+@media(max-width:700px) { .certificate-section .chapter-title { font-size: clamp(2rem,10.4vw,3.5rem); } }

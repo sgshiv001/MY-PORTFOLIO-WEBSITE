@@ -1,0 +1,14 @@
+{
+  "name": "shivanshu-gupta-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node tests/portfolio.cjs && node tests/security.mjs",
+    "dev": "node scripts/preview.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "jsdom": "30.1.2"
+  }
+}

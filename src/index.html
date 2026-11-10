@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Shivanshu Gupta | GPU CUDA & AI Portfolio</title>
+  <meta name="description" content="Shivanshu Gupta's portfolio. Explore applied AI and systems projects, visual pattern matching research, a measured CUDA benchmark, and his technical résumé.">
+  <meta name="theme-color" content="#090909">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://github.com https://*.githubusercontent.com; connect-src https://api.github.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <link rel="canonical" href="https://shivanshuguptaportfolio.me/">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23090909'/%3E%3Cpath d='M45 16H24L16 24v8h22v9H16v7h26l6-7V25H26v-2h19z' fill='%23eb2535'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="assets/typefaces.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="cinematic.css">
+  <link rel="stylesheet" href="sections.css">
+  <link rel="stylesheet" href="showcase.css">
+  <link rel="stylesheet" href="project-rail.css">
+  <link rel="stylesheet" href="certificates.css">
+  <link rel="stylesheet" href="work.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="profile.js" defer></script>
+  <script src="project-data.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="showcase.js" defer></script>
+  <script src="sections.js" defer></script>
+  <script src="project-rail.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <dialog class="welcome-dialog" id="welcome-dialog" aria-labelledby="welcome-title" aria-describedby="welcome-description">
+    <div class="intro-frame" aria-hidden="true"></div>
+    <div class="intro-top"><span>SG / PERSONAL PORTFOLIO</span><button type="button" class="intro-skip">Skip intro <span aria-hidden="true">↗</span></button></div>
+    <div class="intro-content">
+      <p class="intro-eyebrow">WELCOME. GOOD TO HAVE YOU HERE.</p>
+      <h2 id="welcome-title"><span>Shivanshu</span><span>Gupta<span class="intro-star" aria-hidden="true">✦</span></span></h2>
+      <p id="welcome-description">Exploring the intersection of AI, code<br>and GPU computing.</p>
+      <button class="enter-portfolio" type="button">Enter my portfolio <span aria-hidden="true">↗</span></button>
+    </div>
+    <div class="intro-bottom"><span>MCA ARTIFICIAL INTELLIGENCE</span><span>THE JOURNEY CONTINUES</span></div>
+  </dialog>
+  <button class="section-menu-toggle" type="button" aria-expanded="false" aria-controls="section-navigation"><span aria-hidden="true">☰</span><span>Sections</span></button>
+  <button class="section-menu-scrim" type="button" aria-label="Close section menu" hidden></button>
+  <aside class="section-sidebar" aria-label="Portfolio chapters">
+    <a class="sidebar-brand" href="#home" aria-label="Shivanshu Gupta home">SG<span aria-hidden="true">✦</span></a>
+    <p class="sidebar-caption">THE PORTFOLIO</p>
+    <nav id="section-navigation" aria-label="Sections">
+      <a href="#home" class="section-nav-link is-active" aria-current="location"><span class="nav-number" aria-hidden="true">00</span><span>Home</span><span class="nav-indicator" aria-hidden="true"></span></a>
+      <a href="#projects" class="section-nav-link"><span class="nav-number" aria-hidden="true">01</span><span>Projects</span><span class="nav-indicator" aria-hidden="true"></span></a>
+      <a href="#study" class="section-nav-link"><span class="nav-number" aria-hidden="true">02</span><span>Study</span><span class="nav-indicator" aria-hidden="true"></span></a>
+      <a href="#certificates" class="section-nav-link"><span class="nav-number" aria-hidden="true">03</span><span>Certificates</span><span class="nav-indicator" aria-hidden="true"></span></a>
+      <a href="#linkedin" class="section-nav-link"><span class="nav-number" aria-hidden="true">04</span><span>LinkedIn</span><span class="nav-indicator" aria-hidden="true"></span></a>
+      <a href="#contact" class="section-nav-link"><span class="nav-number" aria-hidden="true">05</span><span>Contact</span><span class="nav-indicator" aria-hidden="true"></span></a>
+    </nav>
+    <div class="sidebar-bottom"><span class="sidebar-scroll-line" aria-hidden="true"></span><span>SCROLL TO EXPLORE</span></div>
+  </aside>
+  <div class="page-shell">
+    <header class="masthead">
+      <a class="brand" href="#home" aria-label="Shivanshu Gupta home"><span class="brand-mark">SG<span>✦</span></span><span class="brand-description">MCA ARTIFICIAL INTELLIGENCE<br><span>GPU / CUDA / AI</span></span></a>
+      <div class="masthead-actions"><span class="masthead-caption">CODE. COMPUTE. CREATE.</span></div>
+
+      <div class="theme-tools">
+        <button id="theme-toggle" class="theme-icon-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
+          <svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42m0-14.14-1.42 1.42m-11.3 11.3-1.42 1.42"/></svg>
+          <svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"/></svg>
+        </button>
+        <button id="theme-system" class="theme-system" type="button" hidden>Use device theme</button>
+      </div>
+    </header>
+    <main id="main">
+      <section class="hero chapter" data-chapter="home" id="home" aria-labelledby="hero-title">
+        <div class="hero-word" aria-hidden="true">PORTFOLIO</div>
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-grid" aria-hidden="true"></div><div class="hero-coordinate" aria-hidden="true">CODE / COMPUTE / CREATE</div>
+        <div class="hero-intro">
+          <p class="hello">Hello, I’m</p>
+          <h1 id="hero-title">Shivanshu<br>Gupta</h1>
+          <p class="role">PYTHON / AI &amp; ML / GPU COMPUTING</p>
+          <p class="hero-description">I’m an MCA Artificial Intelligence student. I build Python applications and study GPU programming with CUDA.</p>
+          <div class="hero-actions">
+            <a href="#projects" class="portfolio-action primary-action">View projects <span aria-hidden="true">↓</span></a>
+            <a href="assets/Shivanshu_Gupta_ATS_Resume.pdf" class="portfolio-action" download>Download résumé <span aria-hidden="true">↓</span></a>
+            <div class="hero-research-links">
+              <a href="#thesis-research" class="portfolio-link">Thesis research <span aria-hidden="true">↗</span></a>
+              <a href="#cuda-benchmark" class="portfolio-link">CUDA benchmark <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="hero-portrait"><img src="assets/portrait-840.webp" srcset="assets/portrait-480.webp 480w, assets/portrait-840.webp 840w" sizes="(max-width: 700px) calc(100vw - 44px), 50vw" class="portrait" width="840" height="1050" alt="Shivanshu Gupta" fetchpriority="high"></div>
+        <aside class="hero-focus" aria-label="Current focus">
+          <div class="focus-intro"><span class="orbit" aria-hidden="true">✦</span><p>Business understanding.<br>Computing foundations.<br>A future in AI.</p></div>
+          <div class="focus-item"><strong>MCA</strong><span>ARTIFICIAL INTELLIGENCE<br>COMPUTER VISION RESEARCH</span></div>
+          <div class="focus-item"><strong>CUDA</strong><span>ACTIVE SPECIALIZATION<br>& GPU LEARNING</span></div>
+          <div class="focus-item"><strong>AI/ML</strong><span>ENGINEERING<br>CAREER FOCUS</span></div>
+        </aside>
+        <div class="hero-bottom"><span>KANPUR, UTTAR PRADESH, INDIA</span><span>PYTHON · DSA · GPU COMPUTING</span></div>
+      </section>
+
+      <div class="focus-strip" aria-label="Areas of interest"><span>PYTHON</span><i aria-hidden="true">✦</i><span>AI / ML</span><i aria-hidden="true">✦</i><span>GPU COMPUTING</span><i aria-hidden="true">✦</i><span>CUDA LEARNING</span><i aria-hidden="true">✦</i><span>GEN AI</span></div>
+
+      <section class="work-section section-pad chapter" data-chapter="projects" id="projects" aria-labelledby="projects-title">
+        <div class="section-top"><div class="chapter-heading"><p class="chapter-eyebrow">01 / SELECTED WORK &amp; RESEARCH</p><h2 class="chapter-title" id="projects-title"><span>My</span><span>Projects.<span class="title-star" aria-hidden="true">✦</span></span></h2><p class="chapter-summary">Applied AI and systems projects, visual pattern matching research, and a hands-on CUDA experiment.</p></div></div>
+        <span class="chapter-watermark" aria-hidden="true">01</span>
+        <div class="case-study-grid">
+          <article class="case-study" id="verdyn-case-study" aria-labelledby="verdyn-case-title">
+            <div class="case-visual verdyn-workflow">
+              <p>VERDYN / DATA WORKFLOW</p>
+              <ol aria-label="Verdyn data workflow">
+                <li><span>01</span>Validate hourly CSVs</li>
+                <li><span>02</span>Compare buildings</li>
+                <li><span>03</span>Forecast and flag unusual use</li>
+              </ol>
+            </div>
+            <div class="case-body">
+              <p class="case-kicker">APPLIED ANALYTICS / CAMPUS DATA</p>
+              <h3 id="verdyn-case-title">Verdyn</h3>
+              <p>Campus teams can compare energy and water use across buildings using their own hourly readings.</p>
+              <dl>
+                <div><dt>Project work</dt><dd>CSV validation, building comparisons, and a median-based forecast with unusual-usage flags.</dd></div>
+                <div><dt>Documented behavior</dt><dd>Four complete days of readings enable next-day forecasts. Shorter uploads still produce summaries.</dd></div>
+              </dl>
+              <div class="case-links">
+                <a class="portfolio-link" href="https://github.com/sgshiv001/Verdyn-AI-Campus-Digital-Twin">Source &amp; setup <span aria-hidden="true">↗</span></a>
+                <a class="portfolio-link" href="#verdyn-case-study" aria-label="Permalink to Verdyn case study">Case study link <span aria-hidden="true">#</span></a>
+              </div>
+            </div>
+          </article>
+          <article class="case-study" id="tradevelocity-case-study" aria-labelledby="tradevelocity-case-title">
+            <figure class="case-visual case-screenshot">
+              <img src="assets/projects/orders-2.png" alt="TradeVelocity market-history workspace showing a price chart and market statistics" loading="lazy" decoding="async">
+              <figcaption>TRADEVELOCITY / APPLICATION SCREENSHOT</figcaption>
+            </figure>
+            <div class="case-body">
+              <p class="case-kicker">SYSTEMS ENGINEERING / TEAM PROJECT</p>
+              <h3 id="tradevelocity-case-title">TradeVelocity</h3>
+              <p>A local order-matching application for inspecting an order book, handling partial fills, and reviewing executions.</p>
+              <dl>
+                <div><dt>My project focus</dt><dd>Matching rules, fills, cancellations, and order-book correctness.</dd></div>
+                <div><dt>Team verification</dt><dd>The Windows 11 verification run recorded 159 passing Python tests and 10 passing browser tests on 1 October 2026.</dd></div>
+              </dl>
+              <div class="case-links">
+                <a class="portfolio-link" href="https://github.com/sgshiv001/TRADE-VELOCITY/blob/main/docs/completion-report.md">Test report <span aria-hidden="true">↗</span></a>
+                <a class="portfolio-link" href="#tradevelocity-case-study" aria-label="Permalink to TradeVelocity case study">Case study link <span aria-hidden="true">#</span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <article class="research-feature" id="thesis-research" aria-labelledby="thesis-research-title">
+          <div>
+            <p class="case-kicker">THESIS RESEARCH / COMPUTER VISION</p>
+            <h3 id="thesis-research-title">GPU-Accelerated Mathematical Framework for Intelligent Visual Pattern Matching</h3>
+            <p>My research studies handwritten digit recognition using oriented gradients, principal component analysis, and a support vector machine. The report also describes a convolutional network design and examines how moving data affects GPU performance.</p>
+            <a class="portfolio-action" href="assets/research/visual-pattern-matching-thesis.pdf" download>Download thesis report <span aria-hidden="true">PDF ↓</span></a>
+          </div>
+          <dl class="research-stats">
+            <div><dt>Images in Digits dataset</dt><dd>1,797</dd></div>
+            <div><dt>Correct classical predictions</dt><dd>353 of 360</dd></div>
+            <div><dt>Reported classical test accuracy</dt><dd>98.06%</dd></div>
+          </dl>
+        </article>
+
+        <article class="cuda-benchmark" id="cuda-benchmark" aria-labelledby="cuda-benchmark-title">
+          <div class="benchmark-intro">
+            <p class="case-kicker">CUDA LAB / MEASURED EXPERIMENT</p>
+            <h3 id="cuda-benchmark-title">Vector addition on a GPU</h3>
+            <p>A single-threaded CPU loop and a CUDA kernel add the same FP32 vectors. Every output element matched across all three input sizes.</p>
+            <p class="benchmark-details">GeForce RTX 5060 Laptop GPU · Intel Core i7-14650HX · CUDA 13.4 · Windows</p>
+            <a class="portfolio-action" href="assets/cuda/vector-add.cu" download>Download CUDA source <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="benchmark-results">
+            <table>
+              <caption>Median time in milliseconds</caption>
+              <thead><tr><th scope="col">Elements</th><th scope="col">CPU loop</th><th scope="col">GPU kernel</th><th scope="col">Transfers</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">65,536</th><td>0.0051</td><td>0.0238</td><td>0.0943</td></tr>
+                <tr><th scope="row">1,048,576</th><td>0.2053</td><td>0.0655</td><td>1.0054</td></tr>
+                <tr><th scope="row">16,777,216</th><td>9.4774</td><td>0.6322</td><td>13.8528</td></tr>
+              </tbody>
+            </table>
+            <p class="benchmark-details">21 samples after five warm-ups per size. CUDA events time the kernel. Transfers include both input uploads and the result download through pinned host memory. Allocation is outside the timed runs.</p>
+            <p>At the largest size, the kernel took about 0.63 ms. Transfers alone took about 13.85 ms, more than the CPU loop’s 9.48 ms.</p>
+          </div>
+        </article>
+
+        <div class="section-top project-library-heading"><h3>Browse all projects</h3><div class="project-rail-heading-actions"><a class="all-projects-link" href="https://github.com/sgshiv001?tab=repositories" target="_blank" rel="noopener noreferrer">MY GITHUB <span aria-hidden="true">↗</span></a><div class="project-rail-controls"><button id="project-previous" type="button" aria-label="Previous project" aria-controls="project-track">←</button><span id="project-position" aria-live="polite">01 / 05</span><button id="project-next" type="button" aria-label="Next project" aria-controls="project-track">→</button></div></div></div>
+        <div class="project-rail" role="region" aria-label="Browse five GitHub projects" aria-roledescription="carousel">
+          <p class="project-rail-hint">DRAG, SWIPE OR USE THE ARROWS <span aria-hidden="true">⟷</span></p>
+          <div class="project-grid project-track" id="project-track" tabindex="0" aria-label="Projects. Use left and right arrow keys to browse.">
+          <article class="project-card featured-project" aria-label="1 of 5: InvenTrack">
+            <div class="project-visual ai-visual project-image-tile">
+              <img class="project-cover" src="assets/projects/inventory-1.svg" alt="InvenTrack dashboard interface preview from its repository" loading="lazy" decoding="async">
+              <div class="project-image-shade" aria-hidden="true"></div><span class="image-frame-corner" aria-hidden="true"></span>
+              <div class="visual-kicker">01 / FEATURED PROJECT</div><div class="visual-title">Inven<br>Track.</div><div class="visual-bottom">REPOSITORY INTERFACE PREVIEW</div>
+              <button class="project-tile-trigger" type="button" data-project="inventory" aria-label="Open InvenTrack project showcase" aria-haspopup="dialog"><span>VIEW PROJECT</span><span aria-hidden="true">↗</span></button>
+            </div>
+            <div class="project-caption"><span class="project-number">01</span><div><h3>InvenTrack</h3><p>ELECTRON · NODE.JS · SQLITE</p></div><button class="project-open" type="button" data-project="inventory" aria-label="Read about InvenTrack" aria-haspopup="dialog">+</button></div>
+            <p class="project-description">A local inventory workspace for retailers and distributors, with stock ledgers, purchase orders, CSV tools and a Windows desktop app.</p>
+            <a class="project-repository" href="https://github.com/sgshiv001/inventrack-inventory-management" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="project-card" aria-label="2 of 5: LapCont">
+            <div class="project-visual lapcont-visual project-concept-tile">
+              <div class="device-art" aria-hidden="true"><span class="device-screen"><i></i><i></i><i></i></span><span class="device-phone"><i></i></span><span class="device-signal"></span></div>
+              <div class="project-image-shade" aria-hidden="true"></div><span class="image-frame-corner" aria-hidden="true"></span>
+              <div class="visual-kicker">02 / CROSS-DEVICE TEST BUILD</div><div class="visual-title">Control.<br>Connect.</div><div class="visual-bottom">CONCEPT ART / TEST BUILD</div>
+              <button class="project-tile-trigger" type="button" data-project="lapcont" aria-label="Open LapCont project showcase" aria-haspopup="dialog"><span>VIEW PROJECT</span><span aria-hidden="true">↗</span></button>
+            </div>
+            <div class="project-caption"><span class="project-number">02</span><div><h3>LapCont</h3><p>KOTLIN · C# / .NET · GO</p></div><button class="project-open" type="button" data-project="lapcont" aria-label="Read about LapCont" aria-haspopup="dialog">+</button></div>
+            <p class="project-description">An Android-to-Windows remote-control test build with QR pairing, permission-based media access and PC session controls.</p>
+            <a class="project-repository" href="https://github.com/sgshiv001/LAPCONT" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="project-card" aria-label="3 of 5: NEET Fortress">
+            <div class="project-visual neet-visual project-image-tile">
+              <img class="project-cover" src="assets/projects/neet-banner-960.webp" srcset="assets/projects/neet-banner-480.webp 480w, assets/projects/neet-banner-960.webp 960w" sizes="(max-width: 700px) calc(100vw - 44px), 600px" alt="NEET Fortress repository banner artwork" loading="lazy" decoding="async" draggable="false">
+              <div class="project-image-shade" aria-hidden="true"></div><span class="image-frame-corner" aria-hidden="true"></span>
+              <div class="visual-kicker">03 / EXAM PRACTICE PROTOTYPE</div><div class="visual-title">NEET<br>Fortress.</div><div class="visual-bottom">REPOSITORY BANNER / PROTOTYPE</div>
+              <button class="project-tile-trigger" type="button" data-project="neet" aria-label="Open NEET Fortress project showcase" aria-haspopup="dialog"><span>VIEW PROJECT</span><span aria-hidden="true">↗</span></button>
+            </div>
+            <div class="project-caption"><span class="project-number">03</span><div><h3>NEET Fortress</h3><p>REACT · VINEXT · CLOUDFLARE</p></div><button class="project-open" type="button" data-project="neet" aria-label="Read about NEET Fortress" aria-haspopup="dialog">+</button></div>
+            <p class="project-description">An exam practice and paper-assembly prototype with question-bank tools, browser-saved attempts and local audit demonstrations.</p>
+            <a class="project-repository" href="https://github.com/sgshiv001/NEET-Fortress" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="project-card" aria-label="4 of 5: Verdyn">
+            <div class="project-visual verdyn-visual project-concept-tile">
+              <div class="campus-art" aria-hidden="true"><span class="campus-orbit"></span><span class="campus-building tower-one"></span><span class="campus-building tower-two"></span><span class="campus-building tower-three"></span><span class="campus-ground"></span></div>
+              <div class="project-image-shade" aria-hidden="true"></div><span class="image-frame-corner" aria-hidden="true"></span>
+              <div class="visual-kicker">04 / CAMPUS SUSTAINABILITY</div><div class="visual-title">Campus<br>Digital Twin.</div><div class="visual-bottom">REPOSITORY OVERVIEW</div>
+              <button class="project-tile-trigger" type="button" data-project="verdyn" aria-label="Open Verdyn project showcase" aria-haspopup="dialog"><span>VIEW PROJECT</span><span aria-hidden="true">↗</span></button>
+            </div>
+            <div class="project-caption"><span class="project-number">04</span><div><h3>Verdyn</h3><p>AI-ASSISTED CAMPUS DASHBOARD</p></div><button class="project-open" type="button" data-project="verdyn" aria-label="Read about Verdyn" aria-haspopup="dialog">+</button></div>
+            <p class="project-description">A campus dashboard built from uploaded energy and water readings, with forecasts and unusual-usage checks.</p>
+            <a class="project-repository" href="https://github.com/sgshiv001/Verdyn-AI-Campus-Digital-Twin" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="project-card" aria-label="5 of 5: TradeVelocity">
+            <div class="project-visual order-visual project-image-tile">
+              <img class="project-cover" src="assets/projects/orders-2.png" alt="TradeVelocity market history in dark mode" loading="lazy" decoding="async">
+              <div class="project-image-shade" aria-hidden="true"></div><span class="image-frame-corner" aria-hidden="true"></span>
+              <div class="visual-kicker">05 / COLLABORATIVE PROJECT</div><div class="visual-title">Trade<br>Velocity.</div><div class="visual-bottom">ACTUAL REPOSITORY SCREENSHOT</div>
+              <button class="project-tile-trigger" type="button" data-project="orders" aria-label="Open TradeVelocity project showcase" aria-haspopup="dialog"><span>VIEW PROJECT</span><span aria-hidden="true">↗</span></button>
+            </div>
+            <div class="project-caption"><span class="project-number">05</span><div><h3>TradeVelocity</h3><p>ORDER MATCHING · TEAM PROJECT</p></div><button class="project-open" type="button" data-project="orders" aria-label="Read about TradeVelocity" aria-haspopup="dialog">+</button></div>
+            <p class="project-description">A collaborative local order-matching application built with Python, FastAPI and React.</p>
+            <a class="project-repository" href="https://github.com/sgshiv001/TRADE-VELOCITY" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a>
+          </article>
+          </div>
+          <nav class="project-pagination" aria-label="Choose a project"><button type="button" data-project-index="0" aria-label="Go to project 1: InvenTrack" aria-current="true"><span>01</span></button><button type="button" data-project-index="1" aria-label="Go to project 2: LapCont"><span>02</span></button><button type="button" data-project-index="2" aria-label="Go to project 3: NEET Fortress"><span>03</span></button><button type="button" data-project-index="3" aria-label="Go to project 4: Verdyn"><span>04</span></button><button type="button" data-project-index="4" aria-label="Go to project 5: TradeVelocity"><span>05</span></button></nav>
+        </div>
+      </section>
+
+      <section class="about-section chapter" data-chapter="study" id="study" aria-labelledby="study-title">
+        <span class="chapter-watermark" aria-hidden="true">02</span>
+        <div class="chapter-heading study-heading"><p class="chapter-eyebrow">02 / EDUCATION & SPECIALIZATION</p><h2 class="chapter-title" id="study-title"><span>Always</span><span>Learning.<span class="title-star" aria-hidden="true">✦</span></span></h2><p class="chapter-summary">From a business foundation to Artificial Intelligence and GPU computing.</p></div>
+        <div class="education-panel">
+          <h2>EDUCATION & SKILLS</h2>
+          <p class="about-intro">BBA graduate. Now pursuing an MCA in Artificial Intelligence, with NVIDIA as my priority career goal.</p>
+          <h3 class="red-label">EDUCATION</h3>
+          <div class="education-row"><div><h4>MCA Artificial Intelligence</h4><p>Bennett University</p></div><span>CURRENT</span></div>
+          <div class="education-row"><div><h4>Bachelor of Business Administration</h4><p>BBA completed</p></div><span>COMPLETED</span></div>
+          <div class="education-row"><div><h4>CBSE Class 12</h4><p>Commerce with Computer Science</p></div><span>71%</span></div>
+          <div class="education-row"><div><h4>CBSE Class 10</h4></div><span>74%</span></div>
+          <h3 class="red-label skills-title">FOUNDATIONS & STUDY AREAS</h3>
+          <div class="skill-chips"><span>PYTHON</span><span>DSA</span><span>GIT / GITHUB</span><span>SQL BASICS</span><span>MACHINE LEARNING</span><span>DEEP LEARNING</span><span>NLP</span></div>
+          <p class="additional-learning">Additional background in cybersecurity learning, security fundamentals, networking and risk assessment.</p>
+        </div>
+        <div class="direction-panel">
+          <h2>LEARNING DIRECTION</h2>
+          <ol class="learning-path">
+            <li><span class="path-number">01</span><span class="path-icon" aria-hidden="true">{ }</span><div><h3>PROGRAMMING</h3><p>Python, DSA, Git and SQL foundations.</p></div></li>
+            <li><span class="path-number">02</span><span class="path-icon" aria-hidden="true">∑</span><div><h3>AI & MACHINE LEARNING</h3><p>Developing understanding of ML, deep learning and NLP.</p></div></li>
+            <li><span class="path-number">03</span><span class="path-icon" aria-hidden="true">▦</span><div><h3>GPU & CUDA</h3><p>Active learning focus on CUDA fundamentals and GPU architecture.</p></div></li>
+            <li><span class="path-number">04</span><span class="path-icon" aria-hidden="true">◈</span><div><h3>GENERATIVE AI</h3><p>Longer-term interests in LLMs and retrieval-augmented generation.</p></div></li>
+            <li><span class="path-number">05</span><span class="path-icon" aria-hidden="true">✦</span><div><h3>AGENTIC AI</h3><p>A future direction in AI agents and intelligent applications.</p></div></li>
+          </ol>
+          <button class="specialization-open" type="button" data-project="gpu" aria-label="Read the GPU CUDA learning direction" aria-haspopup="dialog"><span aria-hidden="true">▦</span><span>Explore my CUDA learning</span><span aria-hidden="true">↗</span></button>
+        </div>
+        <aside class="goal-panel">
+          <span class="goal-star" aria-hidden="true">✦</span>
+          <p class="goal-eyebrow">THE DIRECTION I’M BUILDING TOWARD</p>
+          <p class="goal-display">GPU<br>COMPUTING.<br>AI<br>ENGINEERING.</p>
+          <div class="goal-signature">Shivanshu Gupta</div>
+          <div class="goal-bottom"><span>PRIORITY CAREER GOAL</span><strong>NVIDIA</strong><p>CUDA, GPU architecture<br>and AI/ML development.</p></div>
+        </aside>
+      </section>
+
+      <section class="certificate-section section-pad chapter" data-chapter="certificates" id="certificates" aria-labelledby="certificates-title">
+        <span class="chapter-watermark" aria-hidden="true">03</span>
+        <div class="chapter-heading"><p class="chapter-eyebrow">03 / LICENSES & CERTIFICATIONS</p><h2 class="chapter-title" id="certificates-title"><span>Learning,</span><span>Documented.<span class="title-star" aria-hidden="true">✦</span></span></h2><p class="chapter-summary">A foundation in security that complements my ongoing AI and GPU computing studies.</p></div>
+        <article class="certificate-card" aria-labelledby="google-certificate-title">
+          <a class="certificate-preview" href="assets/certificates/google-foundations-cybersecurity.jpg" target="_blank" rel="noopener" aria-label="View Foundations of Cybersecurity certificate image"><img src="assets/certificates/google-foundations-cybersecurity.jpg" width="1772" height="928" alt="Google Foundations of Cybersecurity course certificate awarded to Shivanshu Gupta on October 13, 2025" loading="lazy" decoding="async"><span>VIEW CERTIFICATE <span aria-hidden="true">↗</span></span></a>
+          <div class="certificate-information"><p class="certificate-kicker"><span aria-hidden="true">✓</span> COURSE COMPLETION CERTIFICATE</p><h3 id="google-certificate-title">Foundations of<br>Cybersecurity</h3><p class="certificate-issuer">Google <span>· Offered through Coursera</span></p><dl><div><dt>Completed</dt><dd><time datetime="2025-10-13">13 October 2025</time></dd></div><div><dt>Credential ID</dt><dd>BCR0WHSA0QHW</dd></div></dl><p class="certificate-description">Coursework in security foundations, security ethics, cyber risk and common analyst tools.</p><div class="certificate-links"><a class="certificate-verify" href="https://www.coursera.org/account/accomplishments/verify/BCR0WHSA0QHW" target="_blank" rel="noopener noreferrer">Verify on Coursera <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/shivanshu-gupta-6b99b4380/details/certifications/" target="_blank" rel="noopener noreferrer">View on LinkedIn <span aria-hidden="true">↗</span></a></div></div>
+        </article>
+      </section>
+
+      <section class="linkedin-section section-pad chapter" data-chapter="linkedin" id="linkedin" aria-labelledby="linkedin-title">
+        <span class="chapter-watermark" aria-hidden="true">04</span>
+        <div class="chapter-heading"><p class="chapter-eyebrow">04 / PROFESSIONAL CONNECTIONS</p><h2 class="chapter-title" id="linkedin-title"><span>Let’s</span><span>Connect.<span class="title-star" aria-hidden="true">✦</span></span></h2><p class="chapter-summary">Find me on LinkedIn to connect about AI, GPU computing and opportunities to learn and build.</p></div>
+        <article class="linkedin-profile-card">
+          <div class="linkedin-card-cover" aria-hidden="true"><span>AI / GPU COMPUTING / CODE</span><span class="linkedin-mark">in</span></div>
+          <div class="linkedin-card-body"><div class="profile-monogram" aria-hidden="true">SG<span>✦</span></div><p class="profile-kicker">MY LINKEDIN PROFILE</p><h3>Shivanshu Gupta</h3><p class="profile-role">MCA Artificial Intelligence Student<br>Bennett University</p><p class="profile-location">Kanpur, Uttar Pradesh, India</p><div class="profile-interests"><span>AI / ML</span><span>GPU / CUDA LEARNING</span><span>GEN AI INTERESTS</span></div><a class="linkedin-profile-button" href="https://www.linkedin.com/in/shivanshu-gupta-6b99b4380/" target="_blank" rel="noopener noreferrer">View my LinkedIn <span aria-hidden="true">↗</span></a><p class="profile-url">linkedin.com/in/shivanshu-gupta-6b99b4380</p></div>
+        </article>
+      </section>
+
+      <section class="contact-section section-pad chapter" data-chapter="contact" id="contact" aria-labelledby="contact-title">
+        <div class="contact-heading"><p class="contact-eyebrow">05 / HAVE AN IDEA OR AN OPPORTUNITY?</p><h2 id="contact-title">Let’s build<br>Something<br>Useful.<span>✦</span></h2><p>I’d like to connect about AI/ML, GPU computing, learning collaborations and early-career opportunities.</p>
+          <div class="social-links" aria-label="Social profiles"><a class="social-link" data-social="github" href="https://github.com/sgshiv001" target="_blank" rel="noopener noreferrer"><span>GITHUB</span><span class="social-value">sgshiv001</span><span aria-hidden="true">↗</span></a><a class="social-link" data-social="linkedin" href="https://www.linkedin.com/in/shivanshu-gupta-6b99b4380/" target="_blank" rel="noopener noreferrer"><span>LINKEDIN</span><span class="social-value">Shivanshu Gupta</span><span aria-hidden="true">↗</span></a></div>
+          <p class="contact-email"><span>EMAIL</span><a data-contact-email href="mailto:shivugupta363@gmail.com">shivugupta363@gmail.com</a></p>
+          <p class="alternate-email"><span>ALTERNATE</span><a href="mailto:gshivanshu007@gmail.com">gshivanshu007@gmail.com</a></p>
+          <p class="contact-location">Kanpur, Uttar Pradesh, India</p>
+          <div class="download-links"><a class="download-button" href="assets/Shivanshu_Gupta_ATS_Resume.pdf" download>Technical resume <span>PDF ↓</span></a><a class="download-button secondary" href="assets/Shivanshu_Gupta_Portfolio_CV.pdf" download>Portfolio CV <span>PDF ↓</span></a></div>
+        </div>
+        <div class="contact-details">
+          <div class="form-heading"><h3>SAY HELLO.</h3><span class="form-star" aria-hidden="true">✦</span></div>
+          <form id="contact-form" class="contact-form" action="mailto:shivugupta363@gmail.com" method="post" enctype="text/plain">
+            <div class="form-row"><div class="form-field"><label for="visitor-name">Your name <span>*</span></label><input id="visitor-name" name="name" autocomplete="name" placeholder="Your name" maxlength="100" required></div><div class="form-field"><label for="visitor-email">Your email <span>*</span></label><input id="visitor-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="you@example.com" maxlength="254" required></div></div>
+            <div class="form-field"><label for="visitor-subject">What would you like to discuss? <span>*</span></label><select id="visitor-subject" name="subject" required><option value="" disabled selected>Select a topic</option><option value="AI / ML opportunity">AI / ML opportunity</option><option value="GPU / CUDA opportunity">GPU / CUDA opportunity</option><option value="Project collaboration">Project collaboration</option><option value="Learning & networking">Learning & networking</option><option value="Something else">Something else</option></select></div>
+            <div class="form-field"><label for="visitor-message">Your message <span>*</span></label><textarea id="visitor-message" name="message" placeholder="Tell me a little about your idea or opportunity…" rows="5" minlength="10" maxlength="5000" required></textarea></div>
+            <p class="form-note" id="form-note">Opens your email app with a prepared message. Review it there and send it to me.</p>
+            <button class="form-submit" type="submit"><span id="form-submit-label">Open email draft</span><span aria-hidden="true">↗</span></button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            <div class="message-preview" id="message-preview" hidden><label for="prepared-message">Your prepared message</label><textarea id="prepared-message" rows="7" readonly></textarea><button class="copy-message" type="button">Copy message</button></div>
+          </form>
+          <noscript><p class="form-note">Please email <a href="mailto:shivugupta363@gmail.com">shivugupta363@gmail.com</a> directly.</p></noscript>
+        </div>
+        <div class="footer-note"><span>SHIVANSHU GUPTA</span><button type="button" class="replay-intro">REPLAY WELCOME ↗</button><a href="#home">BACK TO TOP ↑</a></div>
+      </section>
+    </main>
+  </div>
+  <dialog class="project-dialog project-showcase" id="project-dialog" aria-labelledby="dialog-title">
+    <header class="showcase-header"><div><p class="dialog-status" id="dialog-status"></p><h2 id="dialog-title"></h2></div><button class="dialog-close" type="button" aria-label="Close project details"><span>Back</span><span aria-hidden="true">×</span></button></header>
+    <div class="showcase-workspace">
+      <section class="showcase-gallery" id="showcase-gallery" aria-label="Project images">
+        <figure class="gallery-figure"><img id="gallery-image" alt="" decoding="async"><div class="gallery-image-error" id="gallery-image-error" hidden>Image unavailable. You can view the original using the link below.</div><a id="gallery-original" class="gallery-original" target="_blank" rel="noopener noreferrer">Full size ↗</a></figure>
+        <div class="gallery-caption-row"><p id="gallery-caption"></p><div class="gallery-controls"><button type="button" id="gallery-previous" aria-label="Previous project image">←</button><span id="gallery-count" aria-live="polite"></span><button type="button" id="gallery-next" aria-label="Next project image">→</button></div></div>
+        <div class="gallery-thumbnails" id="gallery-thumbnails" aria-label="Choose a project image"></div>
+        <p class="gallery-source-note">Images from the project’s GitHub repository.</p>
+      </section>
+      <section class="showcase-information" aria-label="Project information">
+        <p class="summary-source" id="summary-source">GITHUB REPOSITORY DESCRIPTION</p>
+        <p class="dialog-summary" id="dialog-summary"></p><div class="showcase-languages" id="showcase-languages" aria-label="Repository languages"></div>
+        <div class="showcase-tabs" role="tablist" aria-label="Project detail views"><button class="showcase-tab" id="overview-tab" type="button" role="tab" aria-selected="true" aria-controls="showcase-overview" tabindex="0" data-panel="overview">Highlights</button><button class="showcase-tab" id="readme-tab" type="button" role="tab" aria-selected="false" aria-controls="showcase-readme" tabindex="-1" data-panel="readme">GitHub README</button></div>
+        <div class="showcase-panel" id="showcase-overview" role="tabpanel" aria-labelledby="overview-tab"><div class="dialog-body" id="dialog-body"></div></div>
+        <div class="showcase-panel" id="showcase-readme" role="tabpanel" aria-labelledby="readme-tab" hidden><p class="readme-source-label">FROM THE REPOSITORY README</p><div class="readme-content" id="readme-content"></div></div>
+      </section>
+    </div>
+    <footer class="showcase-footer"><div><p class="github-source-status" id="github-source-status" role="status" aria-live="polite"></p><p class="github-source-date" id="github-source-date"></p></div><div class="showcase-footer-actions"><button id="refresh-project" type="button" class="refresh-project">Refresh GitHub ↻</button><a class="dialog-project-link" id="showcase-repository" target="_blank" rel="noopener noreferrer">View repository ↗</a></div></footer>
+  </dialog>
+</body>
+</html>

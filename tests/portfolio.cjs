@@ -1,0 +1,213 @@
+const {JSDOM, VirtualConsole} = require('jsdom');
+const fs = require('node:fs');
+const path = require('node:path');
+const assert = require('node:assert/strict');
+const crypto = require('node:crypto');
+const output = path.resolve(__dirname,'../public-site');
+const html = fs.readFileSync(path.join(output,'index.html'),'utf8');
+const settle = () => new Promise(resolve=>setTimeout(resolve,30));
+
+function context({mobile=true,dark=true,reduced=false,theme}={}) {
+  const errors=[], requests=[], media=new Map(), observers=[];
+  const log=new VirtualConsole();
+  log.on('jsdomError',e=>{if(!/navigation/i.test(e.message)) errors.push(e.message);});
+  const dom=new JSDOM(html,{url:'https://shivanshuguptaportfolio.me/',runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:log});
+  const w=dom.window,d=w.document;
+  Object.defineProperty(w,'innerWidth',{value:mobile?390:1440,configurable:true});
+  w.matchMedia=query=>{
+    if(!media.has(query)) media.set(query,{matches:query.includes('max-width:700')?mobile:query.includes('color-scheme')?dark:query.includes('reduced-motion')?reduced:false,listeners:[],addEventListener(type,callback){this.listeners.push(callback);}});
+    return media.get(query);
+  };
+  w.IntersectionObserver=class {constructor(callback){this.callback=callback;observers.push(this);}observe(target){this.callback([{isIntersecting:true,target}]);}unobserve(){} };
+  w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};
+  w.HTMLDialogElement.prototype.close=function(){this.open=false;this.dispatchEvent(new w.Event('close'));};
+  w.TextDecoder=require('node:util').TextDecoder;
+  w.localStorage.setItem('sg-motion-paused','true');
+  if(theme) w.localStorage.setItem('sg-theme',theme);
+  const track=d.getElementById('project-track'),cards=[...track.querySelectorAll('.project-card')];
+  Object.defineProperties(track,{scrollWidth:{value:cards.length*628-28,configurable:true},clientWidth:{value:1000,configurable:true}});
+  track.getBoundingClientRect=()=>({left:0,width:1000});
+  cards.forEach((card,index)=>{card.getBoundingClientRect=()=>({left:index*628-track.scrollLeft,width:600});});
+  let behavior;
+  track.scrollTo=options=>{track.scrollLeft=options.left;behavior=options.behavior;track.dispatchEvent(new w.Event('scrollend'));};
+  let offline=false;
+  w.fetch=async url=>{
+    requests.push(url);
+    if(offline) throw new Error('offline');
+    const key=Object.keys(w.projectSnapshots).find(key=>url.includes('/'+w.projectSnapshots[key].repo)),saved=w.projectSnapshots[key];
+    const data=url.endsWith('/readme')?{encoding:'base64',content:Buffer.from(saved.readme+'\n<script>window.INJECTED=true</script>\n[Unsafe](javascript:alert(1))\n').toString('base64'),html_url:saved.readmeUrl}:url.endsWith('/languages')?{Python:123,TypeScript:321}:{description:`Live description: ${key}`,default_branch:'main'};
+    return {ok:true,json:async()=>data};
+  };
+  for(const script of d.querySelectorAll('script[src]')) w.eval(fs.readFileSync(path.join(output,script.getAttribute('src')),'utf8'));
+  return {w,d,dom,media,observers,errors,requests,offline(value){offline=value;},behavior:()=>behavior};
+}
+
+(async()=>{
+  console.log('Checking compiled browser behavior...');
+  const c=context(),{w,d}=c;
+  console.log('Compiled scripts initialized.');
+  assert.equal(d.querySelector('.motion-toggle'),null);
+  assert.equal(d.documentElement.classList.contains('motion-paused'),false,'Old paused preference must not disable animations');
+  assert.equal(d.querySelector('#welcome-dialog').open,false,'The homepage opens directly');
+  d.querySelector('.replay-intro').click();
+  assert.equal(d.querySelector('#welcome-dialog').open,true);
+  d.querySelector('.enter-portfolio').click();
+  assert.equal(d.querySelector('#welcome-dialog').open,false);
+  assert.equal(d.activeElement,d.querySelector('.replay-intro'));
+  assert.equal(d.querySelector('.hero-actions a[download]').getAttribute('href'),'assets/Shivanshu_Gupta_ATS_Resume.pdf');
+  for (const id of ['verdyn-case-study','tradevelocity-case-study','thesis-research','cuda-benchmark']) {
+    assert.ok(d.getElementById(id),`Missing shareable section #${id}`);
+    assert.ok(d.querySelector(`a[href="#${id}"]`),`Missing link to #${id}`);
+  }
+  const thesis = d.querySelector('#thesis-research');
+  assert.doesNotMatch(thesis.textContent,/bennett/i);
+  assert.equal(thesis.querySelector('a[download]').getAttribute('href'),'assets/research/visual-pattern-matching-thesis.pdf');
+  const toggle=d.querySelector('.section-menu-toggle');
+  toggle.click();
+  assert.equal(d.querySelector('.page-shell').inert,true);
+  assert.equal(d.querySelector('.section-sidebar').inert,false);
+  assert.equal(toggle.getAttribute('aria-expanded'),'true');
+  d.querySelector('.section-nav-link:last-child').focus();
+  d.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Tab',bubbles:true,cancelable:true}));
+  assert.equal(d.activeElement,toggle);
+  d.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
+  assert.equal(d.querySelector('.page-shell').inert,false);
+  assert.equal(d.querySelector('.section-sidebar').inert,true);
+  assert.equal(d.getElementById('theme-select'),null);
+  const themes=d.getElementById('theme-toggle'),device=c.media.get('(prefers-color-scheme: dark)');
+  assert.equal(d.documentElement.dataset.theme,'dark');
+  assert.equal(themes.getAttribute('aria-label'),'Switch to light theme');
+  themes.click();
+  assert.equal(d.documentElement.dataset.theme,'light');
+  device.matches=true;device.listeners.forEach(fn=>fn({matches:true}));
+  assert.equal(d.documentElement.dataset.theme,'light','Manual theme must override device');
+  assert.equal(d.querySelector('#theme-system').hidden,false);
+  d.querySelector('#theme-system').click();
+  device.matches=false;device.listeners.forEach(fn=>fn({matches:false}));
+  assert.equal(d.documentElement.dataset.theme,'light');
+  device.matches=true;device.listeners.forEach(fn=>fn({matches:true}));
+  assert.equal(d.documentElement.dataset.theme,'dark');
+  assert.equal(w.localStorage.getItem('sg-theme'),'system');
+  assert.equal(d.querySelector('#theme-system').hidden,true);
+  w.dispatchEvent(new w.StorageEvent('storage',{key:'sg-theme',newValue:'light'}));
+  assert.equal(d.documentElement.dataset.theme,'light');
+  d.querySelector('#theme-system').click();
+  const card=d.querySelector('.project-card');
+  c.observers[0].callback([{isIntersecting:false,target:card}]);
+  assert.equal(card.classList.contains('is-visible'),true,'Phone content must remain visible after entry');
+  d.querySelector('#project-next').click();
+  assert.equal(d.querySelector('#project-position').textContent,'02 / 05');
+  assert.equal(c.behavior(),'smooth');
+  d.querySelector('[data-project-index="4"]').click();
+  assert.equal(d.querySelector('#project-position').textContent,'05 / 05');
+  assert.equal(d.querySelector('#project-next').disabled,true);
+  d.querySelector('#project-track').dispatchEvent(new w.KeyboardEvent('keydown',{key:'Home',bubbles:true,cancelable:true}));
+  assert.equal(d.querySelector('#project-position').textContent,'01 / 05');
+  const rail=d.querySelector('#project-track'),firstProject=rail.querySelector('[data-project]');
+  const pointer=(type,x,y=50,pointerType='mouse')=>{
+    const event=new w.MouseEvent(type,{clientX:x,clientY:y,button:0,bubbles:true,cancelable:true});
+    Object.defineProperties(event,{pointerId:{value:1},pointerType:{value:pointerType}});
+    firstProject.dispatchEvent(event);
+  };
+  pointer('pointerdown',800);pointer('pointermove',150);
+  assert.equal(rail.classList.contains('is-dragging'),true);
+  assert.equal(rail.scrollLeft,650);
+  pointer('pointerup',150);firstProject.click();
+  assert.equal(d.querySelector('#project-dialog').open,false,'Dragging must suppress the resulting project click');
+  assert.equal(rail.classList.contains('is-dragging'),false);
+  assert.equal(d.querySelector('#project-position').textContent,'02 / 05');
+  pointer('pointerdown',200);pointer('pointermove',204);pointer('pointerup',204);firstProject.click();
+  assert.equal(d.querySelector('#project-dialog').open,true,'A normal click still opens the showcase');
+  d.querySelector('.dialog-close').click();
+  const nativeStart=rail.scrollLeft;
+  pointer('pointerdown',800,50,'touch');pointer('pointermove',100,50,'touch');pointer('pointerup',100,50,'touch');
+  assert.equal(rail.scrollLeft,nativeStart,'Touch stays native and is not hijacked by the mouse drag handler');
+  pointer('pointerdown',800);pointer('pointermove',-10000);pointer('pointerup',-10000);
+  assert.equal(rail.scrollLeft,rail.scrollWidth-rail.clientWidth,'Dragging can reach the final card');
+  pointer('pointerdown',100);pointer('pointercancel',100);
+  assert.equal(rail.classList.contains('is-dragging'),false);
+  assert.equal(d.querySelector('.project-card h3').textContent,'InvenTrack');
+  assert.equal(d.querySelectorAll('.project-card').length,5);
+  assert.equal(d.querySelector('[data-project="calculator"], [data-project="practical"]'),null);
+  const certificate=d.querySelector('.certificate-card');
+  assert.match(certificate.textContent,/Foundations of\s*Cybersecurity/);
+  assert.equal(certificate.querySelector('time').dateTime,'2025-10-13');
+  assert.equal(certificate.querySelector('.certificate-verify').href,'https://www.coursera.org/account/accomplishments/verify/BCR0WHSA0QHW');
+  assert.equal(d.querySelector('.section-nav-link[href="#certificates"]').hash,'#certificates');
+  for(const [key,title] of [['verdyn','Verdyn'],['orders','TradeVelocity'],['inventory','InvenTrack'],['lapcont','LapCont'],['neet','NEET Fortress'],['gpu','CUDA & GPU Computing']]) {
+    console.log('Checking project:', key);
+    const trigger=d.querySelector(`[data-project="${key}"]`);trigger.click();
+    assert.equal(d.querySelector('#project-dialog').open,true);
+    assert.equal(d.querySelector('#dialog-title').textContent,title);
+    await settle();
+    if(key!=='gpu') {
+      assert.equal(d.querySelector('#github-source-status').textContent,'Updated from GitHub');
+      d.querySelector('#readme-tab').click();
+      assert.equal(d.querySelector('#readme-content script'),null);
+      assert.equal(d.querySelector('#readme-content a[href^="javascript:"]'),null);
+      assert.equal(w.INJECTED,undefined);
+    }
+    if(['orders','inventory'].includes(key)) {
+      assert.equal(d.querySelector('#gallery-count').textContent,'01 / 02');
+      d.querySelector('#gallery-next').click();
+      assert.equal(d.querySelector('#gallery-count').textContent,'02 / 02');
+    }
+    d.querySelector('.dialog-close').click();
+    assert.equal(d.activeElement,trigger);
+  }
+  const before=c.requests.length;
+  d.querySelector('[data-project="orders"]').click();await settle();
+  assert.equal(c.requests.length,before,'Recent GitHub data is cached');
+  c.offline(true);d.querySelector('#refresh-project').click();await settle();
+  assert.match(d.querySelector('#github-source-status').textContent,/live update unavailable/);
+  d.querySelector('.dialog-close').click();
+  const form=d.getElementById('contact-form');
+  assert.equal(form.checkValidity(),false);
+  form.elements.name.value='Visitor <script>bad</script>';
+  form.elements.email.value='visitor@example.com';
+  form.elements.subject.value='Project collaboration';
+  form.elements.message.value='I would like to discuss a collaborative project.';
+  assert.equal(form.checkValidity(),true);
+  form.dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));
+  assert.equal(d.getElementById('message-preview').hidden,false);
+  assert.match(d.getElementById('prepared-message').value,/visitor@example.com/);
+  assert.equal(d.querySelector('#message-preview script'),null);
+  assert.ok(!/delivered|successfully sent/i.test(d.getElementById('form-status').textContent));
+  for(const node of d.querySelectorAll('script[src],link[rel="stylesheet"]')) {
+    const content=fs.readFileSync(path.join(output,node.getAttribute('src')||node.getAttribute('href')));
+    assert.equal(node.getAttribute('integrity'),'sha384-'+crypto.createHash('sha384').update(content).digest('base64'));
+  }
+  assert.equal(d.querySelector('script:not([src])'),null);
+  assert.equal(d.querySelector('meta[http-equiv="Content-Security-Policy"]').content.includes("script-src 'self'"),true);
+  assert.equal(d.querySelector('link[rel="canonical"]').href,'https://shivanshuguptaportfolio.me/');
+  for(const node of d.querySelectorAll('[src],[href]')) {
+    const value=node.getAttribute('src')||node.getAttribute('href');
+    if(value && !/^(https?:|data:|mailto:|#)/.test(value)) assert.equal(fs.existsSync(path.join(output,value)),true,`Missing local asset: ${value}`);
+  }
+  const cssPath=d.querySelector('link[rel="stylesheet"]').getAttribute('href');
+  const css=fs.readFileSync(path.join(output,cssPath),'utf8');
+  for(const match of css.matchAll(/url\(([^)]+)\)/g)) assert.equal(fs.existsSync(path.join(output,match[1].replace(/["']/g,''))),true,`Missing stylesheet asset: ${match[1]}`);
+  const sitemap=new JSDOM(fs.readFileSync(path.join(output,'sitemap.xml'),'utf8'),{contentType:'application/xml'});
+  assert.equal(sitemap.window.document.querySelector('loc').textContent,'https://shivanshuguptaportfolio.me/');
+  sitemap.window.close();
+  assert.match(fs.readFileSync(path.join(output,'robots.txt'),'utf8'),/Sitemap: https:\/\/shivanshuguptaportfolio.me\/sitemap.xml/);
+  for(const file of fs.readdirSync(output).filter(file=>/\.(js|css|html)$/.test(file))) {
+    assert.ok(!/ghp_[A-Za-z0-9]{30,}|sk-[A-Za-z0-9_-]{30,}|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/.test(fs.readFileSync(path.join(output,file),'utf8')),`Credential pattern in ${file}`);
+  }
+  assert.equal(fs.readdirSync(output).some(file=>file.endsWith('.map')),false);
+  assert.equal(fs.existsSync(path.join(output,'app.js')),false);
+  assert.deepEqual(c.errors,[]);
+  c.dom.window.close();
+  const reduced=context({reduced:true});
+  assert.equal(reduced.d.documentElement.classList.contains('motion-paused'),true);
+  assert.equal(reduced.d.getElementById('welcome-dialog').open,false);
+  reduced.dom.window.close();
+  const desktop=context({mobile:false,dark:false,theme:'dark'});
+  assert.equal(desktop.d.querySelector('.section-sidebar').inert,false);
+  assert.equal(desktop.d.documentElement.dataset.theme,'dark');
+  desktop.observers[0].callback([{isIntersecting:false,target:desktop.d.querySelector('.project-card')}]);
+  assert.equal(desktop.d.querySelector('.project-card').classList.contains('is-visible'),false);
+  desktop.dom.window.close();
+  console.log('Passed: compiled bundles, SRI, no public source maps, mobile menu and focus cycle, intro, always-on default motion, accessibility preference, theme persistence and device sync.');
+  console.log('Passed: all five projects and CUDA viewer, mouse drag and click suppression, native touch, cached GitHub reads, safe README, gallery navigation, offline fallback, carousel controls, contact draft and desktop navigation.');
+})().catch(error=>{console.error(error);process.exitCode=1;});

@@ -1,0 +1,98 @@
+/* Distinct chapters and persistent side navigation. */
+:root { --sidebar-width: 164px; --chapter-progress: 0; }
+html { scroll-padding-top: 24px; }
+.page-shell { width: calc(100% - var(--sidebar-width)); max-width: 1600px; margin-left: var(--sidebar-width); margin-right: auto; }
+.section-sidebar { position: fixed; inset: 0 auto 0 0; width: var(--sidebar-width); z-index: 50; display: flex; flex-direction: column; padding: 30px 18px; border-right: 1px solid #47222b; background: #0d090bf2; backdrop-filter: blur(16px); }
+.sidebar-brand { display: inline-flex; align-items: start; font-family: var(--display); font-size: 3rem; line-height: 1; min-height: 44px; padding-left: 8px; }
+.sidebar-brand > span { color: var(--red); font-size: 1.7rem; padding-left: 5px; }
+.sidebar-caption { margin-top: 17px; padding-left: 8px; color: #a2747d; letter-spacing: .14em; font-size: .56rem; }
+.section-sidebar nav { display: flex; flex-direction: column; gap: 8px; margin-top: auto; margin-bottom: auto; padding: 45px 0; }
+.section-nav-link { display: grid; grid-template-columns: 22px 1fr 8px; gap: 9px; align-items: center; min-height: 53px; padding: 10px 8px; font-size: .8rem; color: #bcaaab; border: 1px solid transparent; transition: color .3s, background .3s, border-color .3s; }
+.nav-number { font-family: var(--display); color: #96626d; font-size: .8rem; }
+.nav-indicator { width: 5px; height: 5px; border: 1px solid #63323e; border-radius: 50%; }
+.section-nav-link:hover { color: #fff0f0; background: #32121e88; }
+.section-nav-link.is-active { color: #fff0f0; background: linear-gradient(90deg,#66152c66,#34102033); border-color: #7a283c; }
+.section-nav-link.is-active .nav-number { color: #ff627a; }
+.section-nav-link.is-active .nav-indicator { background: var(--red); border-color: var(--red); box-shadow: 0 0 13px #ee2638; }
+.sidebar-bottom { display: flex; align-items: center; gap: 14px; padding-left: 8px; color: #9b7780; font-size: .5rem; line-height: 1.7; letter-spacing: .13em; max-width: 120px; }
+.sidebar-scroll-line { position: relative; display: block; flex: 0 0 1px; height: 52px; background: #542131; }
+.sidebar-scroll-line::after { content: ''; position: absolute; inset: 0; background: #ee3653; transform: scaleY(var(--page-progress,0)); transform-origin: top; }
+.section-menu-toggle, .section-menu-scrim { display: none; }
+.masthead-actions { display: flex; align-items: center; gap: 22px; }
+.masthead-caption { font-size: .64rem; color: #a18084; letter-spacing: .12em; }
+.masthead .brand-description { font-size: .63rem; }
+.hero-word { font-size: clamp(7rem,calc(25.7vw - 42.15px),25.7rem); }
+.hero h1 { font-size: clamp(3.7rem,calc(7.1vw - 11.65px),7.1rem); }
+.hero-intro { width: 33%; }
+.hero-description { font-size: .95rem; }
+.hero-focus { width: 18%; }
+.focus-item { gap: 11px; }
+.focus-item strong { min-width: 75px; font-size: 2.3rem; }
+.focus-item span { font-size: .66rem; }
+.hero-coordinate { display: none; }
+.chapter { position: relative; isolation: isolate; scroll-margin-top: 18px; overflow-x: clip; }
+.chapter:not(.hero)::before { content: ''; position: absolute; inset: 0 0 auto; height: 1px; background: linear-gradient(90deg,#ee2638,transparent 85%); opacity: .5; transform: scaleX(var(--chapter-progress,0)); transform-origin: left; pointer-events: none; }
+.chapter-watermark { position: absolute; right: 3%; top: 20px; font-family: var(--display); font-size: clamp(12rem,29vw,28rem); color: #bd264212; line-height: 1; z-index: -1; transform: translateY(var(--scene-shift,0px)); pointer-events: none; user-select: none; }
+.chapter-heading { position: relative; }
+.chapter-eyebrow { font-size: .66rem; letter-spacing: .12em; color: #e46b7f; margin-bottom: 20px; }
+.chapter-title { font-family: var(--display); font-size: clamp(3.9rem,6.8vw,6.5rem); line-height: .87; letter-spacing: -.015em; font-weight: 700; }
+.chapter-title > span { display: block; }
+.chapter-title > span:last-child { color: #f04058; }
+.title-star { font-size: .43em; margin-left: 18px; vertical-align: middle; display: inline-block; }
+.chapter-summary { color: #bba6a5; font-size: .95rem; line-height: 1.7; margin-top: 23px; max-width: 440px; }
+.work-section { padding-top: 80px; padding-bottom: 75px; min-height: 90svh; background: radial-gradient(ellipse at 75% 10%,#55142730,transparent 55%); }
+.work-section .section-top { align-items: end; margin-bottom: 45px; }
+.work-section .project-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 32px; }
+.work-section .project-visual { height: 330px; padding: 26px; }
+.work-section .visual-title { font-size: 3.5rem; }
+.work-section .ai-visual .visual-title { font-size: clamp(2.3rem,3.2vw,3.2rem); }
+.work-section .visual-bottom { left: 26px; bottom: 22px; }
+.work-section .order-diagram { max-width: 350px; margin-top: 26px; }
+.work-section .inventory-diagram { margin-top: 30px; }
+.project-description { font-size: .84rem; color: #b5a09f; line-height: 1.65; margin: 13px 0 2px 43px; max-width: 440px; }
+.study-heading { grid-column: 1 / -1; padding: 75px 3.7% 44px; }
+.about-section { padding-bottom: 55px; background: radial-gradient(ellipse at 15% 15%,#45102222,transparent 52%); }
+.education-panel { padding-left: 11%; }
+.direction-panel { padding-bottom: 25px; }
+.specialization-open { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 56px; border: 1px solid #814153; background: #26101a; color: #f2bcc8; padding: 12px; font-size: .77rem; text-align: left; }
+.specialization-open > span:first-child { font-size: 1.4rem; color: #ed5975; }
+.specialization-open > span:last-child { font-size: 1.1rem; }
+.specialization-open:hover { background: #471326; }
+.goal-panel { margin-right: 3.7%; }
+.goal-display { font-size: clamp(2.4rem,3.6vw,3.8rem); }
+.linkedin-section { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 7%; padding-top: 90px; padding-bottom: 90px; min-height: 90svh; border-bottom: 1px solid #47222b; background: radial-gradient(ellipse at 90% 50%,#4e132a42,transparent 60%); }
+.linkedin-profile-card { border: 1px solid #733044; background: #120c10; box-shadow: 0 25px 70px #0006; max-width: 600px; width: 100%; justify-self: end; }
+.linkedin-card-cover { display: flex; align-items: start; justify-content: space-between; min-height: 135px; padding: 25px; position: relative; background: repeating-linear-gradient(135deg,transparent 0,transparent 24px,#f7638f12 25px,transparent 26px),linear-gradient(110deg,#581426,#230f1b); }
+.linkedin-card-cover > span:first-child { font-size: .61rem; color: #e49caa; letter-spacing: .08em; }
+.linkedin-mark { display: inline-grid; place-items: center; font-family: Arial,sans-serif; font-size: 1.75rem; font-weight: 700; line-height: 1; width: 42px; height: 42px; border-radius: 3px; color: white; background: #0a66c2; }
+.linkedin-card-body { padding: 0 30px 30px; }
+.profile-monogram { position: relative; display: flex; align-items: center; justify-content: center; width: 80px; height: 80px; font-family: var(--display); font-size: 2.3rem; background: #0e090c; border: 1px solid #a3465f; margin-top: -36px; margin-bottom: 26px; }
+.profile-monogram > span { font-size: 1rem; color: #ed5273; margin-left: 3px; }
+.profile-kicker { font-size: .61rem; letter-spacing: .14em; color: #b98696; margin-bottom: 10px; }
+.linkedin-card-body h3 { font-size: 1.65rem; line-height: 1.25; letter-spacing: -.025em; }
+.profile-role { color: #dbbfc4; font-size: .92rem; line-height: 1.6; margin-top: 13px; }
+.profile-location { color: #a88f98; font-size: .8rem; margin-top: 12px; }
+.profile-interests { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 25px; }
+.profile-interests > span { border: 1px solid #5b2e40; color: #d4a1b2; padding: 6px 8px; font-size: .58rem; letter-spacing: .035em; }
+.linkedin-profile-button { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 13px 17px; min-height: 52px; color: white; background: #e42b4f; margin-top: 28px; font-size: .85rem; font-weight: 600; transition: background .25s, transform .25s; }
+.linkedin-profile-button:hover { background: #be173b; transform: translateY(-2px); }
+.linkedin-profile-button > span { font-size: 1.3rem; }
+.profile-url { font-size: .68rem; color: #a17d8c; margin-top: 14px; overflow-wrap: anywhere; }
+.contact-section { padding-top: 85px; min-height: 90svh; }
+
+/* Scroll entrances repeat when the visitor returns to a chapter. */
+.reveal { transform: perspective(1200px) translate3d(0,58px,0) rotateX(3deg); filter: blur(4px); transition: opacity .95s cubic-bezier(.16,.7,.2,1) var(--reveal-delay,0ms), transform 1.05s cubic-bezier(.16,.7,.2,1) var(--reveal-delay,0ms), filter .85s ease var(--reveal-delay,0ms); }
+.reveal.is-visible { transform: perspective(1200px) translate3d(0,0,0) rotateX(0); filter: blur(0); }
+.chapter-heading.reveal { transform: translate3d(-22px,45px,0); }
+.chapter-heading.reveal.is-visible { transform: translate3d(0,0,0); }
+.linkedin-profile-card.reveal { transform: perspective(1200px) translate3d(45px,60px,0) rotateY(-5deg); }
+.linkedin-profile-card.reveal.is-visible { transform: perspective(1200px) translate3d(0,0,0) rotateY(0); }
+.motion-paused .reveal, .motion-paused .chapter-heading.reveal, .motion-paused .linkedin-profile-card.reveal { opacity: 1; transform: none; filter: none; }
+.motion-paused .chapter-watermark { transform: none; }
+
+@media(min-width:1764px) { .hero-word { font-size: 25.7rem; } }
+@media(max-width:1180px) { :root { --sidebar-width: 76px; } .section-sidebar { padding: 25px 6px; } .sidebar-brand { font-size: 2.3rem; padding: 0; justify-content: center; } .sidebar-brand > span { font-size: 1.05rem; padding-left: 2px; } .sidebar-caption { display: none; } .section-nav-link { display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 8px 0; font-size: .68rem; min-height: 66px; } .nav-number { font-size: .72rem; } .nav-indicator { display: none; } .sidebar-bottom { padding-left: 0; justify-content: center; } .sidebar-bottom > span:last-child { display: none; } .hero-word { font-size: calc(25.7vw - 19.5px); } .hero h1 { font-size: calc(7.1vw - 5.4px); } .masthead-caption { display: none; } .chapter-title { font-size: clamp(3.6rem,7vw,6rem); } .linkedin-section { gap: 5%; } .work-section .project-visual { padding: 23px; } .work-section .visual-title { font-size: 3.2rem; } .work-section .ai-visual .visual-title { font-size: 2.7rem; } }
+@media(max-width:900px) { .work-section .project-grid { grid-template-columns: 1fr; gap: 35px; } .work-section .project-visual { height: 320px; } .work-section .ai-visual .visual-title { font-size: 3.2rem; } .linkedin-section { grid-template-columns: 1fr; gap: 45px; } .linkedin-profile-card { justify-self: start; max-width: 650px; } .work-section .section-top { display: block; } .all-projects-link { margin-top: 18px; } .goal-panel { margin: 20px 0 0; } .study-heading { padding-top: 65px; } .hero h1 { font-size: calc(8.2vw - 6.3px); } .focus-item strong { font-size: 1.7rem; min-width: auto; } .focus-item span { font-size: .61rem; } }
+@media(max-width:700px) { :root { --sidebar-width: 38px; } .page-shell { width: calc(100% - 38px); margin-left: 38px; } .section-sidebar { width: 176px; transform: translateX(-100%); padding: 28px 18px; transition: transform .35s ease; } .section-menu-open .section-sidebar { transform: translateX(0); } .section-sidebar nav { gap: 8px; } .section-nav-link { display: grid; grid-template-columns: 22px 1fr 8px; gap: 9px; min-height: 53px; padding: 10px 8px; font-size: .85rem; } .nav-indicator { display: block; } .sidebar-caption { display: block; } .sidebar-brand { font-size: 3rem; justify-content: start; padding-left: 8px; } .sidebar-brand > span { font-size: 1.6rem; } .sidebar-bottom { justify-content: start; padding-left: 8px; } .sidebar-bottom > span:last-child { display: block; } .section-menu-toggle { position: fixed; display: flex; align-items: center; gap: 9px; justify-content: center; left: 0; top: 41%; width: 38px; min-height: 120px; writing-mode: vertical-rl; border: 1px solid #8c354c; border-left: 0; background: #2f1020ee; color: #f1b6c8; font-size: .7rem; z-index: 55; padding: 12px 7px; transition: left .35s; } .section-menu-open .section-menu-toggle { left: 176px; } .section-menu-toggle > span:first-child { font-size: .9rem; } .section-menu-scrim:not([hidden]) { display: block; position: fixed; inset: 0; z-index: 45; border: 0; background: #000a; backdrop-filter: blur(3px); } .masthead { height: 76px; } .masthead .brand-description { display: none; } .hero-word { font-size: calc(25.7vw - 9.8px); } .hero h1 { font-size: calc(13.2vw - 5px); } .hero-description { width: calc(100vw - 78px); } .hero-focus { gap: 9px; } .focus-item strong { font-size: 1.55rem; } .focus-item span { font-size: .57rem; } .hero-bottom { font-size: .65rem; } .hero-intro { width: 58%; } .chapter-title { font-size: clamp(3.2rem,13vw,5rem); } .chapter-eyebrow { font-size: .58rem; letter-spacing: .07em; } .chapter-summary { font-size: .9rem; } .work-section { padding-top: 60px; padding-bottom: 55px; } .work-section .project-visual { padding: 20px; height: 300px; } .work-section .visual-title { font-size: 3rem; } .work-section .ai-visual .visual-title { font-size: 2.6rem; } .project-description { margin-left: 0; } .project-repository { margin-left: 0; } .study-heading { padding: 55px 5% 30px; } .linkedin-section { padding-top: 65px; padding-bottom: 60px; gap: 36px; } .linkedin-card-cover { padding: 20px; min-height: 125px; } .linkedin-card-cover > span:first-child { max-width: 150px; line-height: 1.7; } .linkedin-card-body { padding: 0 20px 25px; } .linkedin-card-body h3 { font-size: 1.45rem; } .profile-role { font-size: .85rem; } .profile-interests > span { font-size: .54rem; } .profile-url { font-size: .6rem; } .contact-section { padding-top: 65px; } .contact-heading h2 { font-size: 3.5rem; } .footer-note { flex-wrap: wrap; padding: 14px 0; } .goal-display { font-size: 2.7rem; } }
+@media(max-width:380px) { .contact-heading h2 { font-size: 3.15rem; } .work-section .visual-title { font-size: 2.7rem; } .work-section .ai-visual .visual-title { font-size: 2.35rem; } .work-section .order-diagram { gap: 7px; } .inventory-diagram { gap: 5px; } .inventory-diagram > span { padding: 9px 5px; font-size: .56rem; } .contact-details { padding: 18px; } .chapter-title { font-size: 3.2rem; } }
+@media(prefers-reduced-motion:reduce) { .reveal, .chapter-heading.reveal, .linkedin-profile-card.reveal { opacity: 1; transform: none; filter: none; } .chapter-watermark { transform: none; } .section-sidebar, .section-menu-toggle { transition: none; } }
