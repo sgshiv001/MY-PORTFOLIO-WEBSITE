@@ -2,9 +2,13 @@
 
 Shivanshu Gupta’s portfolio brings together applied AI, computer vision research, CUDA experiments, and software projects. The homepage links directly to the project showcase, technical résumé, thesis report, and measured GPU benchmark.
 
-**[Live portfolio](https://shivanshuguptaportfolio.me/)** · [Selected projects](https://shivanshuguptaportfolio.me/#projects) · [Thesis research](https://shivanshuguptaportfolio.me/#thesis-research) · [Contact and résumé](https://shivanshuguptaportfolio.me/#contact)
+**[Live portfolio](https://shivanshuguptaportfolio.me/)** · [Selected projects](https://shivanshuguptaportfolio.me/#projects) · [Thesis research](https://shivanshuguptaportfolio.me/#thesis-research) · [Contact and résumé](https://shivanshuguptaportfolio.me/#contact) · [Release history](CHANGELOG.md)
 
 [![Portfolio homepage showing the portrait, navigation, project links, and résumé download](docs/images/portfolio-home.jpg)](https://shivanshuguptaportfolio.me/)
+
+## About Shivanshu
+
+I’m an MCA Artificial Intelligence student. I build Python applications, study GPU programming with CUDA, and research how computer vision models recognize patterns in images. This site brings together my project case studies, thesis report, and CUDA experiment results.
 
 ## Projects
 
