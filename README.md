@@ -2,7 +2,7 @@
 
 Shivanshu Gupta’s portfolio brings together applied AI, computer vision research, CUDA experiments, and software projects. The homepage links directly to the project showcase, technical résumé, thesis report, and measured GPU benchmark.
 
-**[Live portfolio](https://shivanshuguptaportfolio.me/)** · [Selected projects](https://shivanshuguptaportfolio.me/#projects) · [Thesis research](https://shivanshuguptaportfolio.me/#thesis-research) · [Contact and résumé](https://shivanshuguptaportfolio.me/#contact) · [Release history](CHANGELOG.md)
+**[Live portfolio](https://shivanshuguptaportfolio.me/)** · [Selected projects](https://shivanshuguptaportfolio.me/#projects) · [Research](https://shivanshuguptaportfolio.me/#research) · [Contact and résumé](https://shivanshuguptaportfolio.me/#contact) · [Release history](CHANGELOG.md)
 
 [![Portfolio homepage showing the portrait, navigation, project links, and résumé download](docs/images/portfolio-home.jpg)](https://shivanshuguptaportfolio.me/)
 
@@ -34,7 +34,7 @@ The Digits dataset contains **1,797 images**. The classical pipeline reports **3
 
 [Download the research report (PDF)](src/assets/research/visual-pattern-matching-thesis.pdf)
 
-![Research section showing the thesis download, classical classification result, and CUDA timings](docs/images/portfolio-research.jpg)
+![Research section showing the selected navigation item, thesis download, and reported classification results](docs/images/portfolio-research.jpg)
 
 ## CUDA benchmark
 

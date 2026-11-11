@@ -60,6 +60,13 @@ function context({mobile=true,dark=true,reduced=false,theme}={}) {
     assert.ok(d.querySelector(`a[href="#${id}"]`),`Missing link to #${id}`);
   }
   const thesis = d.querySelector('#thesis-research');
+  const research = d.querySelector('#research[data-chapter="research"]');
+  const researchLink = d.querySelector('#section-navigation a[href="#research"]');
+  assert.ok(researchLink);
+  assert.ok(research.contains(thesis));
+  assert.ok(research.querySelector('#cuda-benchmark a[href="assets/cuda/vector-add.cu"]:not([download])'));
+  assert.ok(research.querySelector('#cuda-benchmark a[href="#cuda-how-to-run"]'));
+  assert.match(research.querySelector('#cuda-how-to-run code').textContent,/nvcc .*vector-add\.cu/);
   assert.doesNotMatch(thesis.textContent,/bennett/i);
   assert.equal(thesis.querySelector('a[download]').getAttribute('href'),'assets/research/visual-pattern-matching-thesis.pdf');
   const toggle=d.querySelector('.section-menu-toggle');
@@ -73,6 +80,10 @@ function context({mobile=true,dark=true,reduced=false,theme}={}) {
   d.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
   assert.equal(d.querySelector('.page-shell').inert,false);
   assert.equal(d.querySelector('.section-sidebar').inert,true);
+  toggle.click();
+  researchLink.click();
+  assert.equal(toggle.getAttribute('aria-expanded'),'false');
+  assert.equal(d.querySelector('.page-shell').inert,false);
   assert.equal(d.getElementById('theme-select'),null);
   const themes=d.getElementById('theme-toggle'),device=c.media.get('(prefers-color-scheme: dark)');
   assert.equal(d.documentElement.dataset.theme,'dark');

@@ -98,7 +98,29 @@
   margin-bottom: 24px;
 }
 
-.cuda-benchmark .portfolio-action { margin-top: 14px; }
+.research-section { padding-block: clamp(42px, 6vw, 80px); }
+.research-section .chapter-heading { margin-bottom: clamp(20px, 4vw, 40px); }
+.research-feature strong { color: var(--text); }
+.benchmark-links { margin-top: 14px; }
+.benchmark-run {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+  scroll-margin-top: 24px;
+}
+
+.benchmark-run h4 { font: 600 1.2rem/1.25 var(--headline); margin-bottom: 8px; }
+.benchmark-run a { color: var(--text); text-decoration: underline; text-underline-offset: .2em; }
+.benchmark-run pre {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.benchmark-run code { font-family: var(--code); font-size: .82rem; }
 .benchmark-details { font-size: .82rem; margin-top: 8px; }
 .benchmark-results table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: .82rem; }
 .benchmark-results caption { text-align: left; font-weight: 700; margin-bottom: 6px; }
@@ -135,6 +157,7 @@
   .hero-actions { grid-row: 5; margin: 14px 0 8px; align-self: start; }
   .hero-portrait { grid-row: 6; }
   .case-study-grid { grid-template-columns: minmax(0, 1fr); }
+  .research-section { scroll-margin-top: 0; }
   .research-feature { grid-template-columns: minmax(0, 1fr); }
   .benchmark-results table { font-size: clamp(.65rem, 2.8vw, .82rem); }
 }

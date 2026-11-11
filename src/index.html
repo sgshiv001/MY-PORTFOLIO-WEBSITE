@@ -49,10 +49,11 @@
     <nav id="section-navigation" aria-label="Sections">
       <a href="#home" class="section-nav-link is-active" aria-current="location"><span class="nav-number" aria-hidden="true">00</span><span>Home</span><span class="nav-indicator" aria-hidden="true"></span></a>
       <a href="#projects" class="section-nav-link"><span class="nav-number" aria-hidden="true">01</span><span>Projects</span><span class="nav-indicator" aria-hidden="true"></span></a>
-      <a href="#study" class="section-nav-link"><span class="nav-number" aria-hidden="true">02</span><span>Study</span><span class="nav-indicator" aria-hidden="true"></span></a>
-      <a href="#certificates" class="section-nav-link"><span class="nav-number" aria-hidden="true">03</span><span>Certificates</span><span class="nav-indicator" aria-hidden="true"></span></a>
-      <a href="#linkedin" class="section-nav-link"><span class="nav-number" aria-hidden="true">04</span><span>LinkedIn</span><span class="nav-indicator" aria-hidden="true"></span></a>
-      <a href="#contact" class="section-nav-link"><span class="nav-number" aria-hidden="true">05</span><span>Contact</span><span class="nav-indicator" aria-hidden="true"></span></a>
+      <a href="#research" class="section-nav-link"><span class="nav-number" aria-hidden="true">02</span><span>Research</span><span class="nav-indicator" aria-hidden="true"></span></a>
+      <a href="#study" class="section-nav-link"><span class="nav-number" aria-hidden="true">03</span><span>Study</span><span class="nav-indicator" aria-hidden="true"></span></a>
+      <a href="#certificates" class="section-nav-link"><span class="nav-number" aria-hidden="true">04</span><span>Certificates</span><span class="nav-indicator" aria-hidden="true"></span></a>
+      <a href="#linkedin" class="section-nav-link"><span class="nav-number" aria-hidden="true">05</span><span>LinkedIn</span><span class="nav-indicator" aria-hidden="true"></span></a>
+      <a href="#contact" class="section-nav-link"><span class="nav-number" aria-hidden="true">06</span><span>Contact</span><span class="nav-indicator" aria-hidden="true"></span></a>
     </nav>
     <div class="sidebar-bottom"><span class="sidebar-scroll-line" aria-hidden="true"></span><span>SCROLL TO EXPLORE</span></div>
   </aside>
@@ -101,7 +102,7 @@
       <div class="focus-strip" aria-label="Areas of interest"><span>PYTHON</span><i aria-hidden="true">✦</i><span>AI / ML</span><i aria-hidden="true">✦</i><span>GPU COMPUTING</span><i aria-hidden="true">✦</i><span>CUDA LEARNING</span><i aria-hidden="true">✦</i><span>GEN AI</span></div>
 
       <section class="work-section section-pad chapter" data-chapter="projects" id="projects" aria-labelledby="projects-title">
-        <div class="section-top"><div class="chapter-heading"><p class="chapter-eyebrow">01 / SELECTED WORK &amp; RESEARCH</p><h2 class="chapter-title" id="projects-title"><span>My</span><span>Projects.<span class="title-star" aria-hidden="true">✦</span></span></h2><p class="chapter-summary">Applied AI and systems projects, visual pattern matching research, and a hands-on CUDA experiment.</p></div></div>
+        <div class="section-top"><div class="chapter-heading"><p class="chapter-eyebrow">01 / SELECTED WORK</p><h2 class="chapter-title" id="projects-title"><span>My</span><span>Projects.<span class="title-star" aria-hidden="true">✦</span></span></h2><p class="chapter-summary">Applied AI and software projects, with case studies on campus analytics and order matching.</p></div></div>
         <span class="chapter-watermark" aria-hidden="true">01</span>
         <div class="case-study-grid">
           <article class="case-study" id="verdyn-case-study" aria-labelledby="verdyn-case-title">
@@ -147,43 +148,6 @@
             </div>
           </article>
         </div>
-
-        <article class="research-feature" id="thesis-research" aria-labelledby="thesis-research-title">
-          <div>
-            <p class="case-kicker">THESIS RESEARCH / COMPUTER VISION</p>
-            <h3 id="thesis-research-title">GPU-Accelerated Mathematical Framework for Intelligent Visual Pattern Matching</h3>
-            <p>My research studies handwritten digit recognition using oriented gradients, principal component analysis, and a support vector machine. The report also describes a convolutional network design and examines how moving data affects GPU performance.</p>
-            <a class="portfolio-action" href="assets/research/visual-pattern-matching-thesis.pdf" download>Download thesis report <span aria-hidden="true">PDF ↓</span></a>
-          </div>
-          <dl class="research-stats">
-            <div><dt>Images in Digits dataset</dt><dd>1,797</dd></div>
-            <div><dt>Correct classical predictions</dt><dd>353 of 360</dd></div>
-            <div><dt>Reported classical test accuracy</dt><dd>98.06%</dd></div>
-          </dl>
-        </article>
-
-        <article class="cuda-benchmark" id="cuda-benchmark" aria-labelledby="cuda-benchmark-title">
-          <div class="benchmark-intro">
-            <p class="case-kicker">CUDA LAB / MEASURED EXPERIMENT</p>
-            <h3 id="cuda-benchmark-title">Vector addition on a GPU</h3>
-            <p>A single-threaded CPU loop and a CUDA kernel add the same FP32 vectors. Every output element matched across all three input sizes.</p>
-            <p class="benchmark-details">GeForce RTX 5060 Laptop GPU · Intel Core i7-14650HX · CUDA 13.4 · Windows</p>
-            <a class="portfolio-action" href="assets/cuda/vector-add.cu" download>Download CUDA source <span aria-hidden="true">↓</span></a>
-          </div>
-          <div class="benchmark-results">
-            <table>
-              <caption>Median time in milliseconds</caption>
-              <thead><tr><th scope="col">Elements</th><th scope="col">CPU loop</th><th scope="col">GPU kernel</th><th scope="col">Transfers</th></tr></thead>
-              <tbody>
-                <tr><th scope="row">65,536</th><td>0.0051</td><td>0.0238</td><td>0.0943</td></tr>
-                <tr><th scope="row">1,048,576</th><td>0.2053</td><td>0.0655</td><td>1.0054</td></tr>
-                <tr><th scope="row">16,777,216</th><td>9.4774</td><td>0.6322</td><td>13.8528</td></tr>
-              </tbody>
-            </table>
-            <p class="benchmark-details">21 samples after five warm-ups per size. CUDA events time the kernel. Transfers include both input uploads and the result download through pinned host memory. Allocation is outside the timed runs.</p>
-            <p>At the largest size, the kernel took about 0.63 ms. Transfers alone took about 13.85 ms, more than the CPU loop’s 9.48 ms.</p>
-          </div>
-        </article>
 
         <div class="section-top project-library-heading"><h3>Browse all projects</h3><div class="project-rail-heading-actions"><a class="all-projects-link" href="https://github.com/sgshiv001?tab=repositories" target="_blank" rel="noopener noreferrer">MY GITHUB <span aria-hidden="true">↗</span></a><div class="project-rail-controls"><button id="project-previous" type="button" aria-label="Previous project" aria-controls="project-track">←</button><span id="project-position" aria-live="polite">01 / 05</span><button id="project-next" type="button" aria-label="Next project" aria-controls="project-track">→</button></div></div></div>
         <div class="project-rail" role="region" aria-label="Browse five GitHub projects" aria-roledescription="carousel">
@@ -249,9 +213,63 @@
         </div>
       </section>
 
+      <section class="research-section section-pad chapter" data-chapter="research" id="research" aria-labelledby="research-title">
+        <div class="chapter-heading">
+          <h2 class="chapter-title" id="research-title"><span>Research<span class="title-star" aria-hidden="true">✦</span></span></h2>
+        </div>
+
+        <article class="research-feature" id="thesis-research" aria-labelledby="thesis-research-title">
+          <div>
+            <p class="case-kicker">THESIS / COMPUTER VISION</p>
+            <h3 id="thesis-research-title">GPU-Accelerated Mathematical Framework for Intelligent Visual Pattern Matching</h3>
+            <p><strong>How well can a classical model recognize handwritten digits?</strong></p>
+            <p>My thesis evaluates a classifier built with histograms of oriented gradients, principal component analysis, and a support vector machine. The report also describes a convolutional network design and examines how data transfers affect GPU performance.</p>
+            <a class="portfolio-action" href="assets/research/visual-pattern-matching-thesis.pdf" download>Download thesis report <span aria-hidden="true">PDF ↓</span></a>
+          </div>
+          <dl class="research-stats">
+            <div><dt>Images in Digits dataset</dt><dd>1,797</dd></div>
+            <div><dt>Correct predictions on the held-out set</dt><dd>353 of 360</dd></div>
+            <div><dt>Reported classical test accuracy</dt><dd>98.06%</dd></div>
+          </dl>
+        </article>
+
+        <article class="cuda-benchmark" id="cuda-benchmark" aria-labelledby="cuda-benchmark-title">
+          <div class="benchmark-intro">
+            <p class="case-kicker">CUDA BENCHMARK</p>
+            <h3 id="cuda-benchmark-title">Vector addition on a GPU</h3>
+            <p>A single-threaded CPU loop and a CUDA kernel add the same FP32 vectors. Every output element matched across all three input sizes.</p>
+            <p class="benchmark-details">GeForce RTX 5060 Laptop GPU · Intel Core i7-14650HX · CUDA 13.4 · Windows</p>
+            <div class="case-links benchmark-links">
+              <a class="portfolio-action" href="assets/cuda/vector-add.cu">View source</a>
+              <a class="portfolio-link" href="#cuda-how-to-run">How to run <span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+          <div class="benchmark-results">
+            <table>
+              <caption>Median time in milliseconds</caption>
+              <thead><tr><th scope="col">Elements</th><th scope="col">CPU loop</th><th scope="col">GPU kernel</th><th scope="col">Transfers</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">65,536</th><td>0.0051</td><td>0.0238</td><td>0.0943</td></tr>
+                <tr><th scope="row">1,048,576</th><td>0.2053</td><td>0.0655</td><td>1.0054</td></tr>
+                <tr><th scope="row">16,777,216</th><td>9.4774</td><td>0.6322</td><td>13.8528</td></tr>
+              </tbody>
+            </table>
+            <p class="benchmark-details">21 samples after five warm-ups per size. CUDA events time the kernel. Transfers include both input uploads and the result download through pinned host memory. Allocation is outside the timed runs.</p>
+            <p>At the largest size, the kernel took about 0.63 ms. Transfers alone took about 13.85 ms, more than the CPU loop’s 9.48 ms.</p>
+          </div>
+          <section class="benchmark-run" id="cuda-how-to-run" aria-labelledby="cuda-how-to-run-title">
+            <h4 id="cuda-how-to-run-title">How to run the benchmark</h4>
+            <p>Save <a href="assets/cuda/vector-add.cu" download>vector-add.cu</a> to a folder. On Windows, open Developer PowerShell with the CUDA Toolkit available and run both commands from that folder.</p>
+            <pre><code>nvcc -O3 -arch=sm_120 vector-add.cu -o vector-add.exe
+.\vector-add.exe</code></pre>
+            <p class="benchmark-details">The <code>sm_120</code> flag targets the RTX 5060 Laptop GPU. Choose the architecture flag for your GPU. The program prints the timing results and checks the GPU output against the CPU result.</p>
+          </section>
+        </article>
+      </section>
+
       <section class="about-section chapter" data-chapter="study" id="study" aria-labelledby="study-title">
-        <span class="chapter-watermark" aria-hidden="true">02</span>
-        <div class="chapter-heading study-heading"><p class="chapter-eyebrow">02 / EDUCATION & SPECIALIZATION</p><h2 class="chapter-title" id="study-title"><span>Always</span><span>Learning.<span class="title-star" aria-hidden="true">✦</span></span></h2><p class="chapter-summary">From a business foundation to Artificial Intelligence and GPU computing.</p></div>
+        <span class="chapter-watermark" aria-hidden="true">03</span>
+        <div class="chapter-heading study-heading"><p class="chapter-eyebrow">03 / EDUCATION & SPECIALIZATION</p><h2 class="chapter-title" id="study-title"><span>Always</span><span>Learning.<span class="title-star" aria-hidden="true">✦</span></span></h2><p class="chapter-summary">From a business foundation to Artificial Intelligence and GPU computing.</p></div>
         <div class="education-panel">
           <h2>EDUCATION & SKILLS</h2>
           <p class="about-intro">BBA graduate. Now pursuing an MCA in Artificial Intelligence, with NVIDIA as my priority career goal.</p>
@@ -285,8 +303,8 @@
       </section>
 
       <section class="certificate-section section-pad chapter" data-chapter="certificates" id="certificates" aria-labelledby="certificates-title">
-        <span class="chapter-watermark" aria-hidden="true">03</span>
-        <div class="chapter-heading"><p class="chapter-eyebrow">03 / LICENSES & CERTIFICATIONS</p><h2 class="chapter-title" id="certificates-title"><span>Learning,</span><span>Documented.<span class="title-star" aria-hidden="true">✦</span></span></h2><p class="chapter-summary">A foundation in security that complements my ongoing AI and GPU computing studies.</p></div>
+        <span class="chapter-watermark" aria-hidden="true">04</span>
+        <div class="chapter-heading"><p class="chapter-eyebrow">04 / LICENSES & CERTIFICATIONS</p><h2 class="chapter-title" id="certificates-title"><span>Learning,</span><span>Documented.<span class="title-star" aria-hidden="true">✦</span></span></h2><p class="chapter-summary">A foundation in security that complements my ongoing AI and GPU computing studies.</p></div>
         <article class="certificate-card" aria-labelledby="google-certificate-title">
           <a class="certificate-preview" href="assets/certificates/google-foundations-cybersecurity.jpg" target="_blank" rel="noopener" aria-label="View Foundations of Cybersecurity certificate image"><img src="assets/certificates/google-foundations-cybersecurity.jpg" width="1772" height="928" alt="Google Foundations of Cybersecurity course certificate awarded to Shivanshu Gupta on October 13, 2025" loading="lazy" decoding="async"><span>VIEW CERTIFICATE <span aria-hidden="true">↗</span></span></a>
           <div class="certificate-information"><p class="certificate-kicker"><span aria-hidden="true">✓</span> COURSE COMPLETION CERTIFICATE</p><h3 id="google-certificate-title">Foundations of<br>Cybersecurity</h3><p class="certificate-issuer">Google <span>· Offered through Coursera</span></p><dl><div><dt>Completed</dt><dd><time datetime="2025-10-13">13 October 2025</time></dd></div><div><dt>Credential ID</dt><dd>BCR0WHSA0QHW</dd></div></dl><p class="certificate-description">Coursework in security foundations, security ethics, cyber risk and common analyst tools.</p><div class="certificate-links"><a class="certificate-verify" href="https://www.coursera.org/account/accomplishments/verify/BCR0WHSA0QHW" target="_blank" rel="noopener noreferrer">Verify on Coursera <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/shivanshu-gupta-6b99b4380/details/certifications/" target="_blank" rel="noopener noreferrer">View on LinkedIn <span aria-hidden="true">↗</span></a></div></div>
@@ -294,8 +312,8 @@
       </section>
 
       <section class="linkedin-section section-pad chapter" data-chapter="linkedin" id="linkedin" aria-labelledby="linkedin-title">
-        <span class="chapter-watermark" aria-hidden="true">04</span>
-        <div class="chapter-heading"><p class="chapter-eyebrow">04 / PROFESSIONAL CONNECTIONS</p><h2 class="chapter-title" id="linkedin-title"><span>Let’s</span><span>Connect.<span class="title-star" aria-hidden="true">✦</span></span></h2><p class="chapter-summary">Find me on LinkedIn to connect about AI, GPU computing and opportunities to learn and build.</p></div>
+        <span class="chapter-watermark" aria-hidden="true">05</span>
+        <div class="chapter-heading"><p class="chapter-eyebrow">05 / PROFESSIONAL CONNECTIONS</p><h2 class="chapter-title" id="linkedin-title"><span>Let’s</span><span>Connect.<span class="title-star" aria-hidden="true">✦</span></span></h2><p class="chapter-summary">Find me on LinkedIn to connect about AI, GPU computing and opportunities to learn and build.</p></div>
         <article class="linkedin-profile-card">
           <div class="linkedin-card-cover" aria-hidden="true"><span>AI / GPU COMPUTING / CODE</span><span class="linkedin-mark">in</span></div>
           <div class="linkedin-card-body"><div class="profile-monogram" aria-hidden="true">SG<span>✦</span></div><p class="profile-kicker">MY LINKEDIN PROFILE</p><h3>Shivanshu Gupta</h3><p class="profile-role">MCA Artificial Intelligence Student<br>Bennett University</p><p class="profile-location">Kanpur, Uttar Pradesh, India</p><div class="profile-interests"><span>AI / ML</span><span>GPU / CUDA LEARNING</span><span>GEN AI INTERESTS</span></div><a class="linkedin-profile-button" href="https://www.linkedin.com/in/shivanshu-gupta-6b99b4380/" target="_blank" rel="noopener noreferrer">View my LinkedIn <span aria-hidden="true">↗</span></a><p class="profile-url">linkedin.com/in/shivanshu-gupta-6b99b4380</p></div>
@@ -303,7 +321,7 @@
       </section>
 
       <section class="contact-section section-pad chapter" data-chapter="contact" id="contact" aria-labelledby="contact-title">
-        <div class="contact-heading"><p class="contact-eyebrow">05 / HAVE AN IDEA OR AN OPPORTUNITY?</p><h2 id="contact-title">Let’s build<br>Something<br>Useful.<span>✦</span></h2><p>I’d like to connect about AI/ML, GPU computing, learning collaborations and early-career opportunities.</p>
+        <div class="contact-heading"><p class="contact-eyebrow">06 / HAVE AN IDEA OR AN OPPORTUNITY?</p><h2 id="contact-title">Let’s build<br>Something<br>Useful.<span>✦</span></h2><p>I’d like to connect about AI/ML, GPU computing, learning collaborations and early-career opportunities.</p>
           <div class="social-links" aria-label="Social profiles"><a class="social-link" data-social="github" href="https://github.com/sgshiv001" target="_blank" rel="noopener noreferrer"><span>GITHUB</span><span class="social-value">sgshiv001</span><span aria-hidden="true">↗</span></a><a class="social-link" data-social="linkedin" href="https://www.linkedin.com/in/shivanshu-gupta-6b99b4380/" target="_blank" rel="noopener noreferrer"><span>LINKEDIN</span><span class="social-value">Shivanshu Gupta</span><span aria-hidden="true">↗</span></a></div>
           <p class="contact-email"><span>EMAIL</span><a data-contact-email href="mailto:shivugupta363@gmail.com">shivugupta363@gmail.com</a></p>
           <p class="alternate-email"><span>ALTERNATE</span><a href="mailto:gshivanshu007@gmail.com">gshivanshu007@gmail.com</a></p>
