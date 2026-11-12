@@ -20,7 +20,7 @@ function setChapterMenu(open, restoreFocus = false) {
   chapterSidebar.inert = mobileChapterMenu.matches && !open;
   chapterPage.inert = mobileChapterMenu.matches && open;
   if (open) chapterNavigation.querySelector('.is-active')?.focus();
-  else if (restoreFocus) chapterMenuButton.focus();
+  else if (restoreFocus) chapterMenuButton.focus({preventScroll:true});
 }
 chapterMenuButton.addEventListener('click', () => setChapterMenu(chapterMenuButton.getAttribute('aria-expanded') !== 'true', true));
 chapterMenuScrim.addEventListener('click', () => setChapterMenu(false, true));

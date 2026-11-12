@@ -46,8 +46,15 @@ function context({mobile=true,dark=true,reduced=false,theme}={}) {
   console.log('Checking compiled browser behavior...');
   const c=context(),{w,d}=c;
   console.log('Compiled scripts initialized.');
-  assert.equal(d.querySelector('.motion-toggle'),null);
+  const motionToggle = d.querySelector('.motion-toggle');
   assert.equal(d.documentElement.classList.contains('motion-paused'),false,'Old paused preference must not disable animations');
+  motionToggle.click();
+  assert.equal(motionToggle.getAttribute('aria-pressed'),'true');
+  assert.equal(d.documentElement.classList.contains('motion-paused'),true);
+  assert.equal(w.localStorage.getItem('sg-motion'),'paused');
+  motionToggle.click();
+  assert.equal(motionToggle.getAttribute('aria-pressed'),'false');
+  assert.equal(d.documentElement.classList.contains('motion-paused'),false);
   assert.equal(d.querySelector('#welcome-dialog').open,false,'The homepage opens directly');
   d.querySelector('.replay-intro').click();
   assert.equal(d.querySelector('#welcome-dialog').open,true);
@@ -217,7 +224,7 @@ function context({mobile=true,dark=true,reduced=false,theme}={}) {
   assert.equal(desktop.d.querySelector('.section-sidebar').inert,false);
   assert.equal(desktop.d.documentElement.dataset.theme,'dark');
   desktop.observers[0].callback([{isIntersecting:false,target:desktop.d.querySelector('.project-card')}]);
-  assert.equal(desktop.d.querySelector('.project-card').classList.contains('is-visible'),false);
+  assert.equal(desktop.d.querySelector('.project-card').classList.contains('is-visible'),true,'Revealed cards stay visible');
   desktop.dom.window.close();
   console.log('Passed: compiled bundles, SRI, no public source maps, mobile menu and focus cycle, intro, always-on default motion, accessibility preference, theme persistence and device sync.');
   console.log('Passed: all five projects and CUDA viewer, mouse drag and click suppression, native touch, cached GitHub reads, safe README, gallery navigation, offline fallback, carousel controls, contact draft and desktop navigation.');

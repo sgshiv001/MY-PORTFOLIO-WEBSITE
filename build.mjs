@@ -12,7 +12,7 @@ await mkdir(output, {recursive:true});
 await cp(join(source, 'assets'), join(output, 'assets'), {recursive:true});
 for (const file of ['robots.txt', 'sitemap.xml']) await cp(join(source, file), join(output, file));
 const scripts = ['profile.js', 'project-data.js', 'app.js', 'showcase.js', 'sections.js', 'project-rail.js', 'theme.js'];
-const styles = ['style.css', 'cinematic.css', 'sections.css', 'showcase.css', 'project-rail.css', 'responsive.css', 'themes.css', 'certificates.css', 'work.css'];
+const styles = ['style.css', 'cinematic.css', 'sections.css', 'showcase.css', 'project-rail.css', 'responsive.css', 'themes.css', 'certificates.css', 'work.css', 'portfolio.css'];
 const read = (name) => readFile(join(source, name), 'utf8');
 const javascript = "document.documentElement.classList.add('js');\n" + (await Promise.all(scripts.map(read))).join('\n;\n');
 const fonts = (await Promise.all(['assets/fonts.css', 'assets/typefaces.css'].map(read)))

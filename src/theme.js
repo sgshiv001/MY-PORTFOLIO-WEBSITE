@@ -11,7 +11,7 @@
     toggle.setAttribute('aria-label', label);
     toggle.title = label + (preference === 'system' ? ' · Following your device' : '');
     reset.hidden = preference === 'system';
-    document.querySelector('meta[name="theme-color"]').content = dark ? '#090909' : '#faf7f3';
+    document.querySelector('meta[name="theme-color"]').content = dark ? '#080b15' : '#f3f5fd';
   }
   function choose(value) {
     preference = value;
@@ -19,7 +19,7 @@
     apply();
   }
   toggle.addEventListener('click', () => choose(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
-  reset.addEventListener('click', () => { choose('system'); toggle.focus(); });
+  reset.addEventListener('click', () => { choose('system'); toggle.focus({preventScroll:true}); });
   device.addEventListener('change', () => { if (preference === 'system') apply(); });
   window.addEventListener('storage', event => {
     if (event.key === 'sg-theme') {

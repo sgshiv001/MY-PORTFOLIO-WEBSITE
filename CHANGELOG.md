@@ -1,9 +1,10 @@
 # Portfolio release history
 
-[The live portfolio](https://shivanshuguptaportfolio.me/) runs **Sites v14**, published on 11 November 2026. Sites assigns the version numbers below. All listed versions were successfully published. Dates are in India Standard Time.
+[The live portfolio](https://shivanshuguptaportfolio.me/) runs **Sites v15**, published on 13 November 2026. Sites assigns the version numbers below. All listed versions were successfully published. Dates are in India Standard Time.
 
 | Sites version | Published | Website update |
 | --- | --- | --- |
+| **v15** | 13 Nov 2026 | Redesigned the site with a portrait-led orbital hero, a fixed top menu and mobile drawer, new section layouts, updated light and dark themes, and a motion pause control. |
 | **v14** | 11 Nov 2026 | Added Research to the desktop and mobile menus. The section presents the thesis question and reported results, with the report download, CUDA source, timing results, and Windows build and run instructions. |
 | **v13** | 11 Nov 2026 | Rebuilt the Worker with consistent line endings for eight embedded text assets, including font licenses, SVGs, and crawl files. |
 | **v12** | 11 Nov 2026 | Added the Verdyn and TradeVelocity case studies, visual pattern matching thesis report, measured CUDA benchmark and source, and responsive WebP images. The homepage gained direct links to projects, résumé, research, and CUDA, with the welcome sequence available through replay. |

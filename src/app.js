@@ -102,19 +102,42 @@ document.querySelector('.copy-message').addEventListener('click', async () => {
 });
 
 const motionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
-const smallScreen = window.matchMedia('(max-width:700px)');
-// Motion is always enabled by default; the device's accessibility preference wins.
-let motionPaused = motionMedia.matches;
-let revealObserver;
+const motionButton = document.querySelector('.motion-toggle');
+const motionIcon = motionButton.querySelector('[aria-hidden]');
+const hero = document.querySelector('.hero');
+let manualMotionPause = false;
+let motionPaused;
+try { manualMotionPause = localStorage.getItem('sg-motion') === 'paused'; } catch {}
+
 function applyMotionPreference() {
+  motionPaused = motionMedia.matches || manualMotionPause;
   document.documentElement.classList.toggle('motion-paused', motionPaused);
+  const label = motionMedia.matches ? 'Motion reduced by device preference' : motionPaused ? 'Resume motion' : 'Pause motion';
+  motionButton.disabled = motionMedia.matches;
+  motionButton.setAttribute('aria-pressed', String(motionPaused));
+  motionButton.setAttribute('aria-label', label);
+  motionButton.title = label;
+  motionIcon.textContent = motionPaused ? '▷' : 'Ⅱ';
   if (motionPaused) {
     document.querySelectorAll('.reveal').forEach(element => element.classList.add('is-visible'));
     document.documentElement.style.setProperty('--portrait-shift', '0px');
+    hero.style.removeProperty('--scene-x');
+    hero.style.removeProperty('--scene-y');
   }
 }
+
+motionButton.addEventListener('click', () => {
+  manualMotionPause = !manualMotionPause;
+  try { localStorage.setItem('sg-motion', manualMotionPause ? 'paused' : 'auto'); } catch {}
+  applyMotionPreference();
+});
+window.addEventListener('storage', event => {
+  if (event.key !== 'sg-motion') return;
+  manualMotionPause = event.newValue === 'paused';
+  applyMotionPreference();
+});
 applyMotionPreference();
-motionMedia.addEventListener('change', event => { motionPaused = event.matches; applyMotionPreference(); });
+motionMedia.addEventListener('change', applyMotionPreference);
 
 const welcome = document.getElementById('welcome-dialog');
 const replayIntro = document.querySelector('.replay-intro');
@@ -133,41 +156,45 @@ welcome.addEventListener('close', () => {
 });
 document.documentElement.classList.add('portfolio-entered');
 
-const revealElements = document.querySelectorAll('.chapter-heading, .project-card, .education-panel, .direction-panel, .goal-panel, .certificate-card, .linkedin-profile-card, .contact-heading, .contact-details');
-if ('IntersectionObserver' in window) {
-  revealObserver = new IntersectionObserver(entries => {
+const revealElements = document.querySelectorAll('.chapter-heading, .case-study, .project-card, .research-feature, .cuda-benchmark, .education-panel, .direction-panel, .goal-panel, .certificate-card, .linkedin-profile-card, .contact-heading, .contact-details');
+if ('IntersectionObserver' in window && !motionPaused) {
+  const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      const visible = entry.isIntersecting || motionPaused || entry.target.contains(document.activeElement);
-      if (visible) {
-        entry.target.classList.add('is-visible');
-        // Phone content stays readable after its first cinematic entrance.
-        if (smallScreen.matches) revealObserver.unobserve(entry.target);
-      } else if (!smallScreen.matches) entry.target.classList.remove('is-visible');
+      if (!entry.isIntersecting && !motionPaused && !entry.target.contains(document.activeElement)) return;
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
     });
-  }, {threshold:0.03, rootMargin:'0px 0px 30px 0px'});
-  revealElements.forEach((element, index) => {
-    element.classList.add('reveal'); element.style.setProperty('--reveal-delay', `${element.classList.contains('project-card') ? Math.min((index - 1) * 85, 220) : 0}ms`);
+  }, {threshold:0.03, rootMargin:'0px 0px 40px 0px'});
+  revealElements.forEach(element => {
+    element.classList.add('reveal');
     revealObserver.observe(element);
   });
 }
 document.addEventListener('focusin', event => event.target.closest('.reveal')?.classList.add('is-visible'));
 let scheduled = false;
 function updateScroll() {
-  const distance = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = distance > 0 ? Math.min(1, Math.max(0, window.scrollY / distance)) : 0;
-  document.querySelector('.scroll-progress span').style.transform = `scaleX(${progress})`;
-  if (!motionPaused && window.innerWidth > 800) document.documentElement.style.setProperty('--portrait-shift', `${Math.min(window.scrollY * .07, 38)}px`);
+  const shift = !motionPaused && window.innerWidth > 800 ? Math.min(window.scrollY * .045, 28) : 0;
+  document.documentElement.style.setProperty('--portrait-shift', `${shift}px`);
   scheduled = false;
 }
 window.addEventListener('scroll', () => { if (!scheduled) { scheduled = true; requestAnimationFrame(updateScroll); } }, {passive:true});
 window.addEventListener('resize', updateScroll, {passive:true});
 updateScroll();
-const hero = document.querySelector('.hero');
 if (window.matchMedia('(pointer:fine)').matches) {
+  let sceneFrame;
   hero.addEventListener('pointermove', event => {
     if (motionPaused) return;
-    const box = hero.getBoundingClientRect();
-    hero.style.setProperty('--glow-x', `${(event.clientX - box.left) / box.width * 100}%`);
-    hero.style.setProperty('--glow-y', `${(event.clientY - box.top) / box.height * 100}%`);
+    cancelAnimationFrame(sceneFrame);
+    sceneFrame = requestAnimationFrame(() => {
+      if (motionPaused) return;
+      const box = hero.getBoundingClientRect();
+      hero.style.setProperty('--scene-x', `${((event.clientX - box.left) / box.width - .5) * 24}px`);
+      hero.style.setProperty('--scene-y', `${((event.clientY - box.top) / box.height - .5) * 16}px`);
+    });
   }, {passive:true});
+  hero.addEventListener('pointerleave', () => {
+    cancelAnimationFrame(sceneFrame);
+    hero.style.removeProperty('--scene-x');
+    hero.style.removeProperty('--scene-y');
+  });
 }

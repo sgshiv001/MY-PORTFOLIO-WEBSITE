@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Shivanshu Gupta | GPU CUDA & AI Portfolio</title>
   <meta name="description" content="Shivanshu Gupta's portfolio. Explore applied AI and systems projects, visual pattern matching research, a measured CUDA benchmark, and his technical résumé.">
-  <meta name="theme-color" content="#090909">
+  <meta name="theme-color" content="#080b15">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://github.com https://*.githubusercontent.com; connect-src https://api.github.com; object-src 'none'; base-uri 'none'; form-action 'none'">
   <link rel="canonical" href="https://shivanshuguptaportfolio.me/">
@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="project-rail.css">
   <link rel="stylesheet" href="certificates.css">
   <link rel="stylesheet" href="work.css">
+  <link rel="stylesheet" href="portfolio.css">
   <script>document.documentElement.classList.add('js');</script>
   <script src="profile.js" defer></script>
   <script src="project-data.js" defer></script>
@@ -43,43 +44,36 @@
   </dialog>
   <button class="section-menu-toggle" type="button" aria-expanded="false" aria-controls="section-navigation"><span aria-hidden="true">☰</span><span>Sections</span></button>
   <button class="section-menu-scrim" type="button" aria-label="Close section menu" hidden></button>
-  <aside class="section-sidebar" aria-label="Portfolio chapters">
+  <aside class="section-sidebar" aria-label="Portfolio navigation">
     <a class="sidebar-brand" href="#home" aria-label="Shivanshu Gupta home">SG<span aria-hidden="true">✦</span></a>
-    <p class="sidebar-caption">THE PORTFOLIO</p>
     <nav id="section-navigation" aria-label="Sections">
-      <a href="#home" class="section-nav-link is-active" aria-current="location"><span class="nav-number" aria-hidden="true">00</span><span>Home</span><span class="nav-indicator" aria-hidden="true"></span></a>
-      <a href="#projects" class="section-nav-link"><span class="nav-number" aria-hidden="true">01</span><span>Projects</span><span class="nav-indicator" aria-hidden="true"></span></a>
-      <a href="#research" class="section-nav-link"><span class="nav-number" aria-hidden="true">02</span><span>Research</span><span class="nav-indicator" aria-hidden="true"></span></a>
-      <a href="#study" class="section-nav-link"><span class="nav-number" aria-hidden="true">03</span><span>Study</span><span class="nav-indicator" aria-hidden="true"></span></a>
-      <a href="#certificates" class="section-nav-link"><span class="nav-number" aria-hidden="true">04</span><span>Certificates</span><span class="nav-indicator" aria-hidden="true"></span></a>
-      <a href="#linkedin" class="section-nav-link"><span class="nav-number" aria-hidden="true">05</span><span>LinkedIn</span><span class="nav-indicator" aria-hidden="true"></span></a>
-      <a href="#contact" class="section-nav-link"><span class="nav-number" aria-hidden="true">06</span><span>Contact</span><span class="nav-indicator" aria-hidden="true"></span></a>
+      <a href="#home" class="section-nav-link is-active" aria-current="location">Home</a>
+      <a href="#projects" class="section-nav-link">Projects</a>
+      <a href="#research" class="section-nav-link">Research</a>
+      <a href="#study" class="section-nav-link">About</a>
+      <a href="#certificates" class="section-nav-link">Certificates</a>
+      <a href="#linkedin" class="section-nav-link">LinkedIn</a>
+      <a href="#contact" class="section-nav-link">Contact</a>
     </nav>
-    <div class="sidebar-bottom"><span class="sidebar-scroll-line" aria-hidden="true"></span><span>SCROLL TO EXPLORE</span></div>
   </aside>
   <div class="page-shell">
     <header class="masthead">
-      <a class="brand" href="#home" aria-label="Shivanshu Gupta home"><span class="brand-mark">SG<span>✦</span></span><span class="brand-description">MCA ARTIFICIAL INTELLIGENCE<br><span>GPU / CUDA / AI</span></span></a>
-      <div class="masthead-actions"><span class="masthead-caption">CODE. COMPUTE. CREATE.</span></div>
-
+      <a class="brand" href="#home" aria-label="Shivanshu Gupta home"><span class="brand-mark">SG<span aria-hidden="true">✦</span></span></a>
       <div class="theme-tools">
+        <button class="motion-toggle" type="button" aria-label="Pause motion" aria-pressed="false" title="Pause motion"><span aria-hidden="true">Ⅱ</span></button>
         <button id="theme-toggle" class="theme-icon-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
           <svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42m0-14.14-1.42 1.42m-11.3 11.3-1.42 1.42"/></svg>
           <svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"/></svg>
         </button>
-        <button id="theme-system" class="theme-system" type="button" hidden>Use device theme</button>
       </div>
     </header>
     <main id="main">
       <section class="hero chapter" data-chapter="home" id="home" aria-labelledby="hero-title">
-        <div class="hero-word" aria-hidden="true">PORTFOLIO</div>
-        <div class="hero-glow" aria-hidden="true"></div>
-        <div class="hero-grid" aria-hidden="true"></div><div class="hero-coordinate" aria-hidden="true">CODE / COMPUTE / CREATE</div>
+        <div class="hero-scene" aria-hidden="true"></div>
         <div class="hero-intro">
-          <p class="hello">Hello, I’m</p>
-          <h1 id="hero-title">Shivanshu<br>Gupta</h1>
-          <p class="role">PYTHON / AI &amp; ML / GPU COMPUTING</p>
-          <p class="hero-description">I’m an MCA Artificial Intelligence student. I build Python applications and study GPU programming with CUDA.</p>
+          <p class="role">Applied AI · GPU computing</p>
+          <h1 id="hero-title">Shivanshu <span>Gupta</span></h1>
+          <p class="hero-description">I build Python applications, study GPU programming with CUDA, and research how computers recognize patterns in images.</p>
           <div class="hero-actions">
             <a href="#projects" class="portfolio-action primary-action">View projects <span aria-hidden="true">↓</span></a>
             <a href="assets/Shivanshu_Gupta_ATS_Resume.pdf" class="portfolio-action" download>Download résumé <span aria-hidden="true">↓</span></a>
@@ -89,21 +83,12 @@
             </div>
           </div>
         </div>
-        <div class="hero-portrait"><img src="assets/portrait-840.webp" srcset="assets/portrait-480.webp 480w, assets/portrait-840.webp 840w" sizes="(max-width: 700px) calc(100vw - 44px), 50vw" class="portrait" width="840" height="1050" alt="Shivanshu Gupta" fetchpriority="high"></div>
-        <aside class="hero-focus" aria-label="Current focus">
-          <div class="focus-intro"><span class="orbit" aria-hidden="true">✦</span><p>Business understanding.<br>Computing foundations.<br>A future in AI.</p></div>
-          <div class="focus-item"><strong>MCA</strong><span>ARTIFICIAL INTELLIGENCE<br>COMPUTER VISION RESEARCH</span></div>
-          <div class="focus-item"><strong>CUDA</strong><span>ACTIVE SPECIALIZATION<br>& GPU LEARNING</span></div>
-          <div class="focus-item"><strong>AI/ML</strong><span>ENGINEERING<br>CAREER FOCUS</span></div>
-        </aside>
-        <div class="hero-bottom"><span>KANPUR, UTTAR PRADESH, INDIA</span><span>PYTHON · DSA · GPU COMPUTING</span></div>
+        <div class="hero-portrait"><img src="assets/portrait-840.webp" srcset="assets/portrait-480.webp 480w, assets/portrait-840.webp 840w" sizes="(max-width: 700px) 85vw, 46vw" class="portrait" width="840" height="1050" alt="Shivanshu Gupta" fetchpriority="high"></div>
+        <p class="hero-bottom">Kanpur, India</p>
       </section>
 
-      <div class="focus-strip" aria-label="Areas of interest"><span>PYTHON</span><i aria-hidden="true">✦</i><span>AI / ML</span><i aria-hidden="true">✦</i><span>GPU COMPUTING</span><i aria-hidden="true">✦</i><span>CUDA LEARNING</span><i aria-hidden="true">✦</i><span>GEN AI</span></div>
-
       <section class="work-section section-pad chapter" data-chapter="projects" id="projects" aria-labelledby="projects-title">
-        <div class="section-top"><div class="chapter-heading"><p class="chapter-eyebrow">01 / SELECTED WORK</p><h2 class="chapter-title" id="projects-title"><span>My</span><span>Projects.<span class="title-star" aria-hidden="true">✦</span></span></h2><p class="chapter-summary">Applied AI and software projects, with case studies on campus analytics and order matching.</p></div></div>
-        <span class="chapter-watermark" aria-hidden="true">01</span>
+        <div class="section-top"><div class="chapter-heading"><h2 class="chapter-title" id="projects-title">Selected projects</h2><p class="chapter-summary">Applied AI and software projects, with case studies on campus analytics and order matching.</p></div></div>
         <div class="case-study-grid">
           <article class="case-study" id="verdyn-case-study" aria-labelledby="verdyn-case-title">
             <div class="case-visual verdyn-workflow">
@@ -215,7 +200,7 @@
 
       <section class="research-section section-pad chapter" data-chapter="research" id="research" aria-labelledby="research-title">
         <div class="chapter-heading">
-          <h2 class="chapter-title" id="research-title"><span>Research<span class="title-star" aria-hidden="true">✦</span></span></h2>
+          <h2 class="chapter-title" id="research-title">Research</h2>
         </div>
 
         <article class="research-feature" id="thesis-research" aria-labelledby="thesis-research-title">
@@ -268,8 +253,7 @@
       </section>
 
       <section class="about-section chapter" data-chapter="study" id="study" aria-labelledby="study-title">
-        <span class="chapter-watermark" aria-hidden="true">03</span>
-        <div class="chapter-heading study-heading"><p class="chapter-eyebrow">03 / EDUCATION & SPECIALIZATION</p><h2 class="chapter-title" id="study-title"><span>Always</span><span>Learning.<span class="title-star" aria-hidden="true">✦</span></span></h2><p class="chapter-summary">From a business foundation to Artificial Intelligence and GPU computing.</p></div>
+        <div class="chapter-heading study-heading"><h2 class="chapter-title" id="study-title">About me</h2><p class="chapter-summary">From a business foundation to Artificial Intelligence and GPU computing.</p></div>
         <div class="education-panel">
           <h2>EDUCATION & SKILLS</h2>
           <p class="about-intro">BBA graduate. Now pursuing an MCA in Artificial Intelligence, with NVIDIA as my priority career goal.</p>
@@ -294,17 +278,13 @@
           <button class="specialization-open" type="button" data-project="gpu" aria-label="Read the GPU CUDA learning direction" aria-haspopup="dialog"><span aria-hidden="true">▦</span><span>Explore my CUDA learning</span><span aria-hidden="true">↗</span></button>
         </div>
         <aside class="goal-panel">
-          <span class="goal-star" aria-hidden="true">✦</span>
-          <p class="goal-eyebrow">THE DIRECTION I’M BUILDING TOWARD</p>
-          <p class="goal-display">GPU<br>COMPUTING.<br>AI<br>ENGINEERING.</p>
-          <div class="goal-signature">Shivanshu Gupta</div>
-          <div class="goal-bottom"><span>PRIORITY CAREER GOAL</span><strong>NVIDIA</strong><p>CUDA, GPU architecture<br>and AI/ML development.</p></div>
+          <p class="goal-display">GPU computing &amp; AI engineering</p>
+          <div class="goal-bottom"><span>CAREER GOAL</span><strong>NVIDIA</strong><p>CUDA, GPU architecture, and AI/ML development.</p></div>
         </aside>
       </section>
 
       <section class="certificate-section section-pad chapter" data-chapter="certificates" id="certificates" aria-labelledby="certificates-title">
-        <span class="chapter-watermark" aria-hidden="true">04</span>
-        <div class="chapter-heading"><p class="chapter-eyebrow">04 / LICENSES & CERTIFICATIONS</p><h2 class="chapter-title" id="certificates-title"><span>Learning,</span><span>Documented.<span class="title-star" aria-hidden="true">✦</span></span></h2><p class="chapter-summary">A foundation in security that complements my ongoing AI and GPU computing studies.</p></div>
+        <div class="chapter-heading"><h2 class="chapter-title" id="certificates-title">Certificates</h2><p class="chapter-summary">A foundation in security that complements my ongoing AI and GPU computing studies.</p></div>
         <article class="certificate-card" aria-labelledby="google-certificate-title">
           <a class="certificate-preview" href="assets/certificates/google-foundations-cybersecurity.jpg" target="_blank" rel="noopener" aria-label="View Foundations of Cybersecurity certificate image"><img src="assets/certificates/google-foundations-cybersecurity.jpg" width="1772" height="928" alt="Google Foundations of Cybersecurity course certificate awarded to Shivanshu Gupta on October 13, 2025" loading="lazy" decoding="async"><span>VIEW CERTIFICATE <span aria-hidden="true">↗</span></span></a>
           <div class="certificate-information"><p class="certificate-kicker"><span aria-hidden="true">✓</span> COURSE COMPLETION CERTIFICATE</p><h3 id="google-certificate-title">Foundations of<br>Cybersecurity</h3><p class="certificate-issuer">Google <span>· Offered through Coursera</span></p><dl><div><dt>Completed</dt><dd><time datetime="2025-10-13">13 October 2025</time></dd></div><div><dt>Credential ID</dt><dd>BCR0WHSA0QHW</dd></div></dl><p class="certificate-description">Coursework in security foundations, security ethics, cyber risk and common analyst tools.</p><div class="certificate-links"><a class="certificate-verify" href="https://www.coursera.org/account/accomplishments/verify/BCR0WHSA0QHW" target="_blank" rel="noopener noreferrer">Verify on Coursera <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/shivanshu-gupta-6b99b4380/details/certifications/" target="_blank" rel="noopener noreferrer">View on LinkedIn <span aria-hidden="true">↗</span></a></div></div>
@@ -312,8 +292,7 @@
       </section>
 
       <section class="linkedin-section section-pad chapter" data-chapter="linkedin" id="linkedin" aria-labelledby="linkedin-title">
-        <span class="chapter-watermark" aria-hidden="true">05</span>
-        <div class="chapter-heading"><p class="chapter-eyebrow">05 / PROFESSIONAL CONNECTIONS</p><h2 class="chapter-title" id="linkedin-title"><span>Let’s</span><span>Connect.<span class="title-star" aria-hidden="true">✦</span></span></h2><p class="chapter-summary">Find me on LinkedIn to connect about AI, GPU computing and opportunities to learn and build.</p></div>
+        <div class="chapter-heading"><h2 class="chapter-title" id="linkedin-title">On LinkedIn</h2><p class="chapter-summary">Connect with me about AI, GPU computing, and opportunities to learn and build.</p></div>
         <article class="linkedin-profile-card">
           <div class="linkedin-card-cover" aria-hidden="true"><span>AI / GPU COMPUTING / CODE</span><span class="linkedin-mark">in</span></div>
           <div class="linkedin-card-body"><div class="profile-monogram" aria-hidden="true">SG<span>✦</span></div><p class="profile-kicker">MY LINKEDIN PROFILE</p><h3>Shivanshu Gupta</h3><p class="profile-role">MCA Artificial Intelligence Student<br>Bennett University</p><p class="profile-location">Kanpur, Uttar Pradesh, India</p><div class="profile-interests"><span>AI / ML</span><span>GPU / CUDA LEARNING</span><span>GEN AI INTERESTS</span></div><a class="linkedin-profile-button" href="https://www.linkedin.com/in/shivanshu-gupta-6b99b4380/" target="_blank" rel="noopener noreferrer">View my LinkedIn <span aria-hidden="true">↗</span></a><p class="profile-url">linkedin.com/in/shivanshu-gupta-6b99b4380</p></div>
@@ -321,7 +300,7 @@
       </section>
 
       <section class="contact-section section-pad chapter" data-chapter="contact" id="contact" aria-labelledby="contact-title">
-        <div class="contact-heading"><p class="contact-eyebrow">06 / HAVE AN IDEA OR AN OPPORTUNITY?</p><h2 id="contact-title">Let’s build<br>Something<br>Useful.<span>✦</span></h2><p>I’d like to connect about AI/ML, GPU computing, learning collaborations and early-career opportunities.</p>
+        <div class="contact-heading"><h2 id="contact-title">Let’s connect</h2><p>I’d like to connect about AI/ML, GPU computing, learning collaborations and early-career opportunities.</p>
           <div class="social-links" aria-label="Social profiles"><a class="social-link" data-social="github" href="https://github.com/sgshiv001" target="_blank" rel="noopener noreferrer"><span>GITHUB</span><span class="social-value">sgshiv001</span><span aria-hidden="true">↗</span></a><a class="social-link" data-social="linkedin" href="https://www.linkedin.com/in/shivanshu-gupta-6b99b4380/" target="_blank" rel="noopener noreferrer"><span>LINKEDIN</span><span class="social-value">Shivanshu Gupta</span><span aria-hidden="true">↗</span></a></div>
           <p class="contact-email"><span>EMAIL</span><a data-contact-email href="mailto:shivugupta363@gmail.com">shivugupta363@gmail.com</a></p>
           <p class="alternate-email"><span>ALTERNATE</span><a href="mailto:gshivanshu007@gmail.com">gshivanshu007@gmail.com</a></p>
@@ -341,7 +320,12 @@
           </form>
           <noscript><p class="form-note">Please email <a href="mailto:shivugupta363@gmail.com">shivugupta363@gmail.com</a> directly.</p></noscript>
         </div>
-        <div class="footer-note"><span>SHIVANSHU GUPTA</span><button type="button" class="replay-intro">REPLAY WELCOME ↗</button><a href="#home">BACK TO TOP ↑</a></div>
+        <div class="footer-note">
+          <span>SHIVANSHU GUPTA</span>
+          <button type="button" class="replay-intro">REPLAY WELCOME ↗</button>
+          <button id="theme-system" class="theme-system" type="button" hidden>Use device theme</button>
+          <a href="#home">BACK TO TOP ↑</a>
+        </div>
       </section>
     </main>
   </div>

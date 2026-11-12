@@ -1,6 +1,6 @@
 # Shivanshu Gupta | AI, CUDA & Software Portfolio
 
-Shivanshu Gupta’s portfolio brings together applied AI, computer vision research, CUDA experiments, and software projects. The homepage links directly to the project showcase, technical résumé, thesis report, and measured GPU benchmark.
+Shivanshu Gupta’s portfolio brings together applied AI, computer vision research, CUDA experiments, and software projects. The orbital homepage links directly to the project showcase, technical résumé, thesis report, and measured GPU benchmark. A fixed section menu becomes a drawer on smaller screens.
 
 **[Live portfolio](https://shivanshuguptaportfolio.me/)** · [Selected projects](https://shivanshuguptaportfolio.me/#projects) · [Research](https://shivanshuguptaportfolio.me/#research) · [Contact and résumé](https://shivanshuguptaportfolio.me/#contact) · [Release history](CHANGELOG.md)
 
@@ -60,7 +60,7 @@ nvcc -O3 -arch=sm_120 src/assets/cuda/vector-add.cu -o vector-add.exe
 | Location | Contents |
 | --- | --- |
 | [`docs/images/`](docs/images/) | Live website screenshots used in this README. They sit outside the site build. |
-| [`src/assets/`](src/assets/) | Editable site assets, including responsive WebP portraits, font files and licenses, the research PDF, and résumé PDFs. |
+| [`src/assets/`](src/assets/) | Editable site assets, including responsive WebP portraits and generated orbital backdrops, font files and licenses, the research PDF, and résumé PDFs. |
 | [`src/assets/projects/`](src/assets/projects/) | Project images, including the TradeVelocity application screenshot, InvenTrack interface previews, and NEET Fortress banner artwork. The portfolio labels previews and artwork alongside application screenshots. |
 | [`src/assets/certificates/`](src/assets/certificates/) | Image of the Google Foundations of Cybersecurity course completion certificate. [Verify on Coursera](https://www.coursera.org/account/accomplishments/verify/BCR0WHSA0QHW) |
 
@@ -95,4 +95,4 @@ Edit assets in `src/` and rebuild to regenerate `public-site/` and `dist/`. Comm
 
 The production site runs as a Cloudflare Worker on Sites. The [hosting manifest](.openai/hosting.json) holds the Site project ID. The custom domain is managed in Sites. The Worker serves the bundled assets over HTTPS and sets the security headers described in [`SECURITY_NOTES.md`](SECURITY_NOTES.md).
 
-The theme follows the visitor’s device and supports a manual override. Animations respect the device’s reduced-motion setting. The contact form opens an email draft for the visitor to review and send.
+The theme follows the visitor’s device and supports a manual override. Visitors can pause motion from the header. The site also respects the device’s reduced-motion setting. The contact form opens an email draft for the visitor to review and send.
