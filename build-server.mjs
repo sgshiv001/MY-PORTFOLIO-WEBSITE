@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {build} from 'esbuild';
 
 const root = dirname(fileURLToPath(import.meta.url)), publicRoot = join(root, 'public-site');
-const types = {'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.txt':'text/plain; charset=utf-8','.cu':'text/plain; charset=utf-8','.xml':'application/xml; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpeg':'image/jpeg','.jpg':'image/jpeg','.webp':'image/webp','.woff2':'font/woff2','.pdf':'application/pdf'};
+const types = {'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.txt':'text/plain; charset=utf-8','.cu':'text/plain; charset=utf-8','.csv':'text/csv; charset=utf-8','.xml':'application/xml; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpeg':'image/jpeg','.jpg':'image/jpeg','.webp':'image/webp','.woff2':'font/woff2','.pdf':'application/pdf'};
 const assets = Object.create(null);
 async function collect(directory, prefix = '') {
   for (const entry of (await readdir(directory, {withFileTypes:true})).sort((a,b) => a.name.localeCompare(b.name))) {
@@ -14,7 +14,7 @@ async function collect(directory, prefix = '') {
     if (entry.isDirectory()) { await collect(filename, name + '/'); continue; }
     if (!entry.isFile()) throw new Error('Public assets must be regular files');
     const ext = name.slice(name.lastIndexOf('.'));
-    if (!types[ext] || name.endsWith('.map') || (ext === '.js' && !/^(site|theme)\.[a-f0-9]{12}\.min\.js$/.test(name))) throw new Error('Unexpected public asset: ' + name);
+    if (!types[ext] || name.endsWith('.map') || (ext === '.js' && !/^(site|theme|cuda-demo)\.[a-f0-9]{12}\.min\.js$/.test(name))) throw new Error('Unexpected public asset: ' + name);
     const bytes = await readFile(filename);
     assets['/' + name] = {type:types[ext], etag:'"' + createHash('sha256').update(bytes).digest('hex') + '"', size:bytes.length, base64:bytes.toString('base64')};
   }

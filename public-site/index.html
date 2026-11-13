@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shivanshu Gupta | GPU CUDA & AI Portfolio</title>
-<meta name="description" content="Shivanshu Gupta's portfolio. Explore applied AI and systems projects, visual pattern matching research, a measured CUDA benchmark, and his technical résumé.">
+<meta name="description" content="Shivanshu Gupta's portfolio. Explore custom CUDA inference, GPU matrix multiplication benchmarks, computer vision research, and software projects.">
 <meta name="theme-color" content="#080b15">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://github.com https://*.githubusercontent.com; connect-src https://api.github.com; object-src 'none'; base-uri 'none'; form-action 'none'">
 <link rel="canonical" href="https://shivanshuguptaportfolio.me/">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23090909'/%3E%3Cpath d='M45 16H24L16 24v8h22v9H16v7h26l6-7V25H26v-2h19z' fill='%23eb2535'/%3E%3C/svg%3E">
 <script src="theme.4b3d078ea7d3.min.js" integrity="sha384-lOYt3G5CfXBZQ5pDnES3rN0zq6uuqfH3zsd89BdIhK9tl3G/6T4Pnr7eKJNwihZt" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="site.4f858972649e.min.css" integrity="sha384-IEg6W24nN7Ua4q35Psz4HcJdnqD2L8Oz22XamI3yXcuzg36WCDJLFpHhTOJC/mbG" crossorigin="anonymous">
-<script src="site.f1f6712dfb49.min.js" integrity="sha384-iOK3Mal5PBN5bEGLAN4pKFTP/fiVjs4eSHQfkrPe6tuOwFN0nqw8xztzqU6Vjrj1" crossorigin="anonymous" defer></script>
+<link rel="stylesheet" href="site.56700c09dc1c.min.css" integrity="sha384-lwiBfCUUZ+ofi1fY+BzppVArWSl5CFEJBoRAfGhvFMgAO+nmjc8tBkyXi7p9RHEp" crossorigin="anonymous">
+<script src="site.1afd2edb2d3d.min.js" integrity="sha384-J7mxrfxImYtLTq1C4CvxVINbGZTGkL33CS6VnEI3eXwvUncnDgcMP6fJdY04cXF9" crossorigin="anonymous" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -59,13 +59,13 @@
 <div class="hero-intro">
 <p class="role">Applied AI · GPU computing</p>
 <h1 id="hero-title">Shivanshu <span>Gupta</span></h1>
-<p class="hero-description">I build Python applications, study GPU programming with CUDA, and research how computers recognize patterns in images.</p>
+<p class="hero-description">I build Python applications and CUDA C++ kernels. My latest project runs a handwritten-digit classifier on the GPU and measures when batching pays off.</p>
 <div class="hero-actions">
 <a href="#projects" class="portfolio-action primary-action">View projects <span aria-hidden="true">↓</span></a>
 <a href="assets/Shivanshu_Gupta_ATS_Resume.pdf" class="portfolio-action" download>Download résumé <span aria-hidden="true">↓</span></a>
 <div class="hero-research-links">
 <a href="#thesis-research" class="portfolio-link">Thesis research <span aria-hidden="true">↗</span></a>
-<a href="#cuda-benchmark" class="portfolio-link">CUDA benchmark <span aria-hidden="true">↗</span></a>
+<a href="#cuda-core-project" class="portfolio-link">CUDA Core project <span aria-hidden="true">↗</span></a>
 </div>
 </div>
 </div>
@@ -74,7 +74,25 @@
 </section>
 
 <section class="work-section section-pad chapter" data-chapter="projects" id="projects" aria-labelledby="projects-title">
-<div class="section-top"><div class="chapter-heading"><h2 class="chapter-title" id="projects-title">Selected projects</h2><p class="chapter-summary">Applied AI and software projects, with case studies on campus analytics and order matching.</p></div></div>
+<div class="section-top"><div class="chapter-heading"><h2 class="chapter-title" id="projects-title">Selected projects</h2><p class="chapter-summary">GPU inference, performance engineering, and software case studies.</p></div></div>
+<article class="research-feature cuda-feature" id="cuda-core-project" aria-labelledby="cuda-core-title">
+<div>
+<p class="case-kicker">CUDA CORE PROJECT · COMPUTER VISION</p>
+<h3 id="cuda-core-title">GPU-Accelerated Visual Pattern Matching</h3>
+<p>I trained a two-block convolutional network to recognize handwritten digits and implemented its inference in CUDA C++. The fused version combines convolution, ReLU, and max pooling, so the full convolution output stays out of global memory.</p>
+<p>The demo lets you browse held-out digits, inspect mistakes, and compare recorded timings by batch size.</p>
+<div class="case-links">
+<a class="portfolio-action primary-action" href="cuda-demo.html">Try the digit demo <span aria-hidden="true">↗</span></a>
+<a class="portfolio-link" href="#cuda-inference-benchmark">Inference benchmarks <span aria-hidden="true">↓</span></a>
+<a class="portfolio-link" href="#cuda-gemm">GEMM lab <span aria-hidden="true">↓</span></a>
+</div>
+</div>
+<dl class="research-stats">
+<div><dt>CNN test accuracy · 347 of 360 digits</dt><dd>96.39%</dd></div>
+<div><dt>CUDA predictions matching PyTorch</dt><dd>360 / 360</dd></div>
+<div><dt>Lower GPU-resident latency with fusion · batch 128</dt><dd>13.7%</dd></div>
+</dl>
+</article>
 <div class="case-study-grid">
 <article class="case-study" id="verdyn-case-study" aria-labelledby="verdyn-case-title">
 <div class="case-visual verdyn-workflow">
@@ -196,12 +214,67 @@
 <p><strong>How well can a classical model recognize handwritten digits?</strong></p>
 <p>My thesis evaluates a classifier built with histograms of oriented gradients, principal component analysis, and a support vector machine. The report also describes a convolutional network design and examines how data transfers affect GPU performance.</p>
 <a class="portfolio-action" href="assets/research/visual-pattern-matching-thesis.pdf" download>Download thesis report <span aria-hidden="true">PDF ↓</span></a>
+<a class="portfolio-link" href="#cuda-core-project">See the follow-up CUDA project <span aria-hidden="true">↗</span></a>
 </div>
 <dl class="research-stats">
 <div><dt>Images in Digits dataset</dt><dd>1,797</dd></div>
 <div><dt>Correct predictions on the held-out set</dt><dd>353 of 360</dd></div>
 <div><dt>Reported classical test accuracy</dt><dd>98.06%</dd></div>
 </dl>
+</article>
+
+<article class="cuda-benchmark" id="cuda-inference-benchmark" aria-labelledby="cuda-inference-title">
+<div class="benchmark-intro">
+<p class="case-kicker">CUDA CORE PROJECT · INFERENCE</p>
+<h3 id="cuda-inference-title">When does GPU batching pay off?</h3>
+<p>On the same held-out split, the trained CNN scored 347 of 360 and the HOG–PCA–SVM baseline scored 336 of 360. Both CUDA implementations matched every PyTorch prediction, with a maximum absolute logit difference of 8.58 × 10<sup>−6</sup>.</p>
+<p class="benchmark-details">GeForce RTX 5060 Laptop GPU · Intel Core i7-14650HX · CUDA 13.4 · Windows</p>
+<div class="case-links benchmark-links">
+<a class="portfolio-action" href="cuda-demo.html#performance">Explore batch timings <span aria-hidden="true">↗</span></a>
+<a class="portfolio-link" href="assets/cuda/vision-latency.csv" download>Inference data <span aria-hidden="true">CSV ↓</span></a>
+</div>
+</div>
+<div class="benchmark-results">
+<table>
+<caption>Median latency per batch in milliseconds</caption>
+<thead><tr><th scope="col">Images</th><th scope="col">CPU</th><th scope="col">Direct GPU</th><th scope="col">Fused GPU</th><th scope="col">Fused + copies</th></tr></thead>
+<tbody>
+<tr><th scope="row">1</th><td>0.0570</td><td>0.0864</td><td>0.0543</td><td>0.0649</td></tr>
+<tr><th scope="row">8</th><td>0.3155</td><td>0.0472</td><td>0.0311</td><td>0.0686</td></tr>
+<tr><th scope="row">128</th><td>3.2704</td><td>0.1223</td><td>0.1055</td><td>0.1413</td></tr>
+<tr><th scope="row">512</th><td>12.7377</td><td>0.3985</td><td>0.3706</td><td>0.4534</td></tr>
+</tbody>
+</table>
+<p class="benchmark-details">Nine samples of 30 calls after eight warm-ups. CPU uses one PyTorch thread. Direct and fused GPU columns keep inputs on the device. The copy-inclusive column includes upload, inference, download, and synchronization.</p>
+<p>Including copies, the CPU was faster for one image. Batch 8 was the first tested size where fused CUDA was faster.</p>
+</div>
+</article>
+
+<article class="cuda-benchmark" id="cuda-gemm" aria-labelledby="cuda-gemm-title">
+<div class="benchmark-intro">
+<p class="case-kicker">CUDA CORE PROJECT · MATRIX MULTIPLICATION</p>
+<h3 id="cuda-gemm-title">FP32 GEMM Performance Lab</h3>
+<p>I benchmarked three custom CUDA C++ kernels against NVIDIA cuBLAS at FP32 precision. Register tiling reduced the 2048 × 2048 × 2048 runtime from 15.030 ms to 3.898 ms, a 3.86× speedup over my naive kernel. cuBLAS took 1.613 ms.</p>
+<p class="benchmark-details">GeForce RTX 5060 Laptop GPU · CUDA 13.4 · Windows</p>
+<div class="case-links benchmark-links">
+<a class="portfolio-link" href="assets/cuda/gemm-latency.csv" download>GEMM data <span aria-hidden="true">CSV ↓</span></a>
+<a class="portfolio-link" href="#cuda-benchmark">Earlier vector-add benchmark <span aria-hidden="true">↓</span></a>
+</div>
+</div>
+<div class="benchmark-results">
+<table>
+<caption>Median kernel time in milliseconds</caption>
+<thead><tr><th scope="col">M × N × K</th><th scope="col">Naive</th><th scope="col">Shared</th><th scope="col">Register</th><th scope="col">cuBLAS</th></tr></thead>
+<tbody>
+<tr><th scope="row">256 × 256 × 256</th><td>0.0390</td><td>0.0308</td><td>0.0328</td><td>0.0207</td></tr>
+<tr><th scope="row">511 × 769 × 513</th><td>0.4103</td><td>0.3180</td><td>0.1400</td><td>0.0724</td></tr>
+<tr><th scope="row">1024 × 1024 × 1024</th><td>1.8966</td><td>1.4232</td><td>0.4877</td><td>0.2250</td></tr>
+<tr><th scope="row">2048 × 2048 × 2048</th><td>15.0297</td><td>11.2919</td><td>3.8981</td><td>1.6125</td></tr>
+</tbody>
+</table>
+<p class="benchmark-details">Seven CUDA-event samples of 50 launches after ten warm-ups. Allocation, copies, and validation are outside the timed interval.</p>
+<p>At 256 × 256 × 256, the shared-memory kernel was the fastest custom variant.</p>
+</div>
 </article>
 
 <article class="cuda-benchmark" id="cuda-benchmark" aria-labelledby="cuda-benchmark-title">
@@ -257,11 +330,11 @@
 <ol class="learning-path">
 <li><span class="path-number">01</span><span class="path-icon" aria-hidden="true">{ }</span><div><h3>PROGRAMMING</h3><p>Python, DSA, Git and SQL foundations.</p></div></li>
 <li><span class="path-number">02</span><span class="path-icon" aria-hidden="true">∑</span><div><h3>AI & MACHINE LEARNING</h3><p>Developing understanding of ML, deep learning and NLP.</p></div></li>
-<li><span class="path-number">03</span><span class="path-icon" aria-hidden="true">▦</span><div><h3>GPU & CUDA</h3><p>Active learning focus on CUDA fundamentals and GPU architecture.</p></div></li>
+<li><span class="path-number">03</span><span class="path-icon" aria-hidden="true">▦</span><div><h3>GPU & CUDA</h3><p>CUDA C++ inference, shared-memory and register tiling, and performance measurement.</p></div></li>
 <li><span class="path-number">04</span><span class="path-icon" aria-hidden="true">◈</span><div><h3>GENERATIVE AI</h3><p>Longer-term interests in LLMs and retrieval-augmented generation.</p></div></li>
 <li><span class="path-number">05</span><span class="path-icon" aria-hidden="true">✦</span><div><h3>AGENTIC AI</h3><p>A future direction in AI agents and intelligent applications.</p></div></li>
 </ol>
-<button class="specialization-open" type="button" data-project="gpu" aria-label="Read the GPU CUDA learning direction" aria-haspopup="dialog"><span aria-hidden="true">▦</span><span>Explore my CUDA learning</span><span aria-hidden="true">↗</span></button>
+<button class="specialization-open" type="button" data-project="gpu" aria-label="Read about my CUDA project work" aria-haspopup="dialog"><span aria-hidden="true">▦</span><span>Explore my CUDA work</span><span aria-hidden="true">↗</span></button>
 </div>
 <aside class="goal-panel">
 <p class="goal-display">GPU computing &amp; AI engineering</p>

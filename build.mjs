@@ -21,11 +21,15 @@ const css = fonts + '\n' + (await Promise.all(styles.map(read))).join('\n');
 const compiledJs = await transform(javascript, {loader:'js', minify:true, format:'iife', target:['es2020'], legalComments:'none', charset:'utf8', sourcemap:false});
 const compiledCss = await transform(css, {loader:'css', minify:true, target:['chrome100', 'safari15'], legalComments:'none', charset:'utf8', sourcemap:false});
 const compiledInit = await transform(await read('theme-init.js'), {loader:'js', minify:true, target:['es2020'], legalComments:'none', sourcemap:false});
+const compiledDemoJs = await transform(await read('cuda-demo.js'), {loader:'js', minify:true, format:'iife', target:['es2020'], legalComments:'none'});
+const compiledDemoCss = await transform(await read('cuda-demo.css'), {loader:'css', minify:true, target:['chrome100', 'safari15'], legalComments:'none'});
 const hash = (code) => createHash('sha256').update(code).digest('hex').slice(0,12);
 const integrity = (code) => 'sha384-' + createHash('sha384').update(code).digest('base64');
 const jsName = `site.${hash(compiledJs.code)}.min.js`;
 const cssName = `site.${hash(compiledCss.code)}.min.css`;
 const initName = `theme.${hash(compiledInit.code)}.min.js`;
+const demoJsName = `cuda-demo.${hash(compiledDemoJs.code)}.min.js`;
+const demoCssName = `cuda-demo.${hash(compiledDemoCss.code)}.min.css`;
 let html = await read('index.html');
 html = html.replace(/\s*<link rel="stylesheet"[^>]+>/g, '')
   .replace(/\s*<script>document.documentElement.classList.add\('js'\);<\/script>/, '')
@@ -36,11 +40,19 @@ await writeFile(join(output, jsName), compiledJs.code);
 await writeFile(join(output, cssName), compiledCss.code);
 await writeFile(join(output, initName), compiledInit.code);
 await writeFile(join(output, 'index.html'), html);
+const demoHtml = (await read('cuda-demo.html'))
+  .replace('href="cuda-demo.css"', `href="${demoCssName}" integrity="${integrity(compiledDemoCss.code)}" crossorigin="anonymous"`)
+  .replace('src="cuda-demo.js"', `src="${demoJsName}" integrity="${integrity(compiledDemoJs.code)}" crossorigin="anonymous"`)
+  .replace(/\r\n/g, '\n');
+await writeFile(join(output, demoJsName), compiledDemoJs.code);
+await writeFile(join(output, demoCssName), compiledDemoCss.code);
+await writeFile(join(output, 'cuda-demo.html'), demoHtml);
 await writeFile(join(output, '_headers'), '/*\n' + Object.entries(securityHeaders).map(([name, value]) => `  ${name}: ${value}`).join('\n') + '\n');
 // Only generated browser bundles are public. Editable source stays outside dist.
 const retired = new Set([...scripts, ...styles, 'app.min.js', 'site.min.css']);
+const currentBundles = new Set([jsName, cssName, initName, demoJsName, demoCssName]);
 for (const file of await readdir(output)) {
-  if (retired.has(file) || (/^(site|theme)\.[a-f0-9]{12}\.min\.(css|js)$/.test(file) && ![jsName, cssName, initName].includes(file))) {
+  if (retired.has(file) || (/^(site|theme|cuda-demo)\.[a-f0-9]{12}\.min\.(css|js)$/.test(file) && !currentBundles.has(file))) {
     const target = resolve(output, file);
     if (dirname(target) !== resolve(output)) throw new Error('Invalid build output path');
     await unlink(target);

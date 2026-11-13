@@ -1,6 +1,6 @@
 # Shivanshu Gupta | Portfolio
 
-I’m an MCA student focused on applied AI, computer vision, and GPU computing. This portfolio collects my software projects, thesis research, and CUDA experiments.
+I’m an MCA student focused on applied AI, computer vision, and GPU computing. My latest project implements native CUDA inference for a handwritten-digit classifier and compares custom matrix multiplication kernels against cuBLAS.
 
 **[Visit the live portfolio](https://shivanshuguptaportfolio.me/)** · [Résumé and contact](https://shivanshuguptaportfolio.me/#contact) · [Release history](CHANGELOG.md)
 
@@ -10,6 +10,7 @@ I’m an MCA student focused on applied AI, computer vision, and GPU computing. 
 
 | Project | What it does |
 | --- | --- |
+| [CUDA Core Project](https://shivanshuguptaportfolio.me/#cuda-core-project) | Runs a trained digit classifier with custom CUDA C++ kernels and measures when GPU batching pays off. Includes an [interactive demo](https://shivanshuguptaportfolio.me/cuda-demo.html) and an [FP32 GEMM lab](https://shivanshuguptaportfolio.me/#cuda-gemm). |
 | [Verdyn](https://shivanshuguptaportfolio.me/#verdyn-case-study) | Compares campus energy and water use from hourly CSV data. |
 | [TradeVelocity](https://shivanshuguptaportfolio.me/#tradevelocity-case-study) | A team-built stock order-matching simulator. I worked on matching rules and order-book correctness. |
 | [InvenTrack](https://github.com/sgshiv001/inventrack-inventory-management) | A desktop inventory workspace for stock, purchase orders, and CSV imports. |
@@ -18,8 +19,8 @@ I’m an MCA student focused on applied AI, computer vision, and GPU computing. 
 
 ## Research and experiments
 
-- **Visual pattern matching thesis** explores handwritten digit recognition. The classifier correctly identified 353 of 360 held-out examples. [Read the report (PDF)](src/assets/research/visual-pattern-matching-thesis.pdf)
-- **CUDA vector addition** compares CPU time with GPU kernel time and measures how much time data transfers add. [View benchmark results](https://shivanshuguptaportfolio.me/#cuda-benchmark)
+- **Visual pattern matching thesis** reports results for the original classical classifier experiment. [Read the report (PDF)](src/assets/research/visual-pattern-matching-thesis.pdf)
+- **CUDA inference** measured 96.39% accuracy for the trained CNN. Both custom CUDA paths matched all 360 PyTorch predictions. [View the inference results](https://shivanshuguptaportfolio.me/#cuda-inference-benchmark)
 
 ## Run locally
 

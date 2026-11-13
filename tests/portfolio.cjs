@@ -62,7 +62,7 @@ function context({mobile=true,dark=true,reduced=false,theme}={}) {
   assert.equal(d.querySelector('#welcome-dialog').open,false);
   assert.equal(d.activeElement,d.querySelector('.replay-intro'));
   assert.equal(d.querySelector('.hero-actions a[download]').getAttribute('href'),'assets/Shivanshu_Gupta_ATS_Resume.pdf');
-  for (const id of ['verdyn-case-study','tradevelocity-case-study','thesis-research','cuda-benchmark']) {
+  for (const id of ['cuda-core-project','cuda-inference-benchmark','cuda-gemm','verdyn-case-study','tradevelocity-case-study','thesis-research','cuda-benchmark']) {
     assert.ok(d.getElementById(id),`Missing shareable section #${id}`);
     assert.ok(d.querySelector(`a[href="#${id}"]`),`Missing link to #${id}`);
   }
@@ -76,6 +76,27 @@ function context({mobile=true,dark=true,reduced=false,theme}={}) {
   assert.match(research.querySelector('#cuda-how-to-run code').textContent,/nvcc .*vector-add\.cu/);
   assert.doesNotMatch(thesis.textContent,/bennett/i);
   assert.equal(thesis.querySelector('a[download]').getAttribute('href'),'assets/research/visual-pattern-matching-thesis.pdf');
+  assert.ok(d.querySelector('#cuda-core-project a[href="cuda-demo.html"]'));
+  assert.ok(d.querySelector('#cuda-inference-benchmark a[href="assets/cuda/vision-latency.csv"][download]'));
+  assert.ok(d.querySelector('#cuda-gemm a[href="assets/cuda/gemm-latency.csv"][download]'));
+  const demo = new JSDOM(fs.readFileSync(path.join(output,'cuda-demo.html'),'utf8'), {runScripts:'outside-only'});
+  const demoDocument = demo.window.document;
+  const demoScript = demoDocument.querySelector('script[src]');
+  const demoCode = fs.readFileSync(path.join(output,demoScript.getAttribute('src')),'utf8');
+  assert.equal(demoScript.getAttribute('integrity'), 'sha384-' + crypto.createHash('sha384').update(demoCode).digest('base64'));
+  assert.equal(demoDocument.querySelectorAll('script:not([src]):not([type="application/json"])').length, 0);
+  assert.ok(demoDocument.getElementById('performance'));
+  demo.window.eval(demoCode);
+  assert.equal(demoDocument.querySelector('#cnn-acc').textContent, '96.39%');
+  assert.match(demoDocument.querySelector('#sample-state').textContent, /^1 of 360/);
+  assert.match(demoDocument.querySelector('#readout').textContent, /CPU baseline was/);
+  demoDocument.querySelector('#next').click();
+  assert.match(demoDocument.querySelector('#sample-state').textContent, /^2 of 360/);
+  demoDocument.querySelector('#errors').click();
+  assert.equal(demoDocument.querySelector('#errors').getAttribute('aria-pressed'), 'true');
+  demoDocument.querySelector('[data-batch="128"]').click();
+  assert.match(demoDocument.querySelector('#readout').textContent, /fused CUDA was 23\.15×/);
+  demo.window.close();
   const toggle=d.querySelector('.section-menu-toggle');
   toggle.click();
   assert.equal(d.querySelector('.page-shell').inert,true);
@@ -200,7 +221,7 @@ function context({mobile=true,dark=true,reduced=false,theme}={}) {
   assert.equal(d.querySelector('link[rel="canonical"]').href,'https://shivanshuguptaportfolio.me/');
   for(const node of d.querySelectorAll('[src],[href]')) {
     const value=node.getAttribute('src')||node.getAttribute('href');
-    if(value && !/^(https?:|data:|mailto:|#)/.test(value)) assert.equal(fs.existsSync(path.join(output,value)),true,`Missing local asset: ${value}`);
+    if(value && !/^(https?:|data:|mailto:|#)/.test(value)) assert.equal(fs.existsSync(path.join(output,value.split('#')[0])),true,`Missing local asset: ${value}`);
   }
   const cssPath=d.querySelector('link[rel="stylesheet"]').getAttribute('href');
   const css=fs.readFileSync(path.join(output,cssPath),'utf8');

@@ -207,12 +207,12 @@
     const learning = !snapshots[key]; dialog.classList.toggle('is-learning', learning);
     dialog.classList.toggle('has-no-gallery', learning);
     byId('dialog-title').textContent = item.title; byId('dialog-status').textContent = item.status;
-    byId('summary-source').textContent = learning ? 'MY LEARNING DIRECTION' : 'GITHUB REPOSITORY DESCRIPTION';
+    byId('summary-source').textContent = learning ? 'PROJECT SUMMARY' : 'GITHUB REPOSITORY DESCRIPTION';
     dialog.querySelector('.gallery-source-note').textContent = key === 'inventory' ? 'SVG interface previews from the project’s GitHub repository.' : key === 'neet' ? 'Banner artwork from the project’s GitHub repository; not an application screenshot.' : 'Actual screenshots from the project’s GitHub repository.';
     const body = byId('dialog-body'); body.replaceChildren(create('h3', item.heading));
     const list = create('ul'); item.points.forEach(point => list.append(create('li', point))); body.append(list, create('p', item.note, 'dialog-note'));
     byId('showcase-repository').hidden = learning; byId('refresh-project').hidden = learning;
-    byId('readme-tab').hidden = learning; byId('github-source-status').textContent = learning ? 'Active learning specialization' : 'Saved GitHub copy';
+    byId('readme-tab').hidden = learning; byId('github-source-status').textContent = learning ? 'Portfolio case study' : 'Saved GitHub copy';
     byId('github-source-date').textContent = ''; selectPanel('overview');
     if (learning) {
       byId('dialog-summary').textContent = item.summary; byId('showcase-gallery').hidden = true; byId('showcase-languages').replaceChildren();

@@ -28,7 +28,16 @@ The Digits dataset contains **1,797 images**. The classical pipeline reports **3
 
 ![Research section showing the selected navigation item, thesis download, and reported classification results](images/portfolio-research.jpg)
 
-## CUDA benchmark
+## CUDA Core Project
+
+The [interactive digit demo](https://shivanshuguptaportfolio.me/cuda-demo.html) uses recorded predictions and timings from the Windows project. It includes the 360 held-out Digits examples and all six measured batch sizes. The browser compares saved results. The native Windows implementation runs the CUDA kernels.
+
+- **CUDA inference.** The trained two-block CNN scored 347/360 (96.39%), and the HOG–PCA–SVM baseline scored 336/360 (93.33%) on the same fixed split. Both CUDA implementations matched all PyTorch predictions. At batch 128, fusion reduced GPU-resident latency from 0.1223 to 0.1055 ms (13.7%); the fused path took 0.1413 ms when both copies and synchronization were included. [Inference CSV](../src/assets/cuda/vision-latency.csv)
+- **FP32 GEMM.** At 2048 × 2048 × 2048, the register-tiled kernel ran in 3.8981 ms, compared with 15.0297 ms for the naive kernel and 1.6125 ms for cuBLAS. At 256 × 256 × 256, the shared-memory kernel led the custom variants. [GEMM CSV](../src/assets/cuda/gemm-latency.csv)
+
+Both experiments used a GeForce RTX 5060 Laptop GPU with CUDA 13.4. The [case study](https://shivanshuguptaportfolio.me/#cuda-core-project) links to the measurement methods and results.
+
+## Vector-add benchmark
 
 The [vector-add experiment](https://shivanshuguptaportfolio.me/#cuda-benchmark) compares a single-threaded CPU loop with a CUDA kernel on an Intel Core i7-14650HX and NVIDIA GeForce RTX 5060 Laptop GPU, using CUDA 13.4 on Windows. Every output element matched at each size.
 

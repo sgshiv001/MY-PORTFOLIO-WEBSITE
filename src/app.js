@@ -9,11 +9,11 @@ const projectDetails = {
     repository: 'https://github.com/sgshiv001/TRADE-VELOCITY'
   },
   gpu: {
-    status: 'ACTIVE SPECIALIZATION / LEARNING TRACK', title: 'CUDA & GPU Computing',
-    summary: 'My current career direction includes NVIDIA GPU computing, CUDA development and GPU architecture. I am pursuing this as a learning specialization alongside my MCA studies.',
-    heading: 'Learning direction',
-    points: ['Build a foundation in GPU architecture and parallel computing concepts.', 'Study CUDA fundamentals and the relationship between threads, blocks and memory.', 'Connect GPU computing concepts with AI/ML workloads as my technical skills develop.'],
-    note: 'CUDA is presented as an active learning target. This portfolio does not claim professional CUDA experience, completed kernels or benchmark results.'
+    status: 'CUDA CORE PROJECT / IMPLEMENTATION & BENCHMARKS', title: 'CUDA & GPU Computing',
+    summary: 'I build and measure CUDA C++ kernels for neural network inference and FP32 matrix multiplication.',
+    heading: 'Implemented and tested',
+    points: ['Direct and fused CUDA inference for a trained digit CNN. Both paths matched all 360 held-out PyTorch predictions.', 'Three FP32 matrix multiplication kernels benchmarked against cuBLAS. The register-tiled kernel was 3.86× as fast as the naive kernel at 2048 × 2048 × 2048.', 'CUDA-event timings for GPU-resident work and separate wall-clock timings for inference with transfers.'],
+    note: 'Measurements were recorded on a GeForce RTX 5060 Laptop GPU with CUDA 13.4.'
   },
   verdyn: {
     status: 'CAMPUS SUSTAINABILITY / PUBLIC REPOSITORY', title: 'Verdyn',
